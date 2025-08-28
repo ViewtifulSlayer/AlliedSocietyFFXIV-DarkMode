@@ -10,3 +10,7 @@ The page is hosted on Github Actions! Go to the site to use it.
 ## Credits
  - The initial concept is based on the spreadsheet from u/brakeomafer on Reddit: https://www.reddit.com/r/ffxiv/comments/t05wm4/tribe_questrep_tracker_spreadsheet/
  - Info on Endwalker tribes added through: https://ffxiv.consolegameswiki.com/wiki/Reputation and https://ffxiv.consolegameswiki.com/wiki/Tribal_Quests
+
+##helpers:
+
+[@belthesar](https://github.com/belthesar) for the intial setup and help based on [the ffixv pvp malmstone calculator made in java ](https://github.com/belthesar/MalmstoneXPCalculator)
