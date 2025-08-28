@@ -263,6 +263,28 @@ const TRIBE_DATA = [
         "daysNeededToMax": 31
     } 
 ]
+function loadInputData() {
+    const inputData = JSON.parse(localStorage.getItem("AlliedSocietyFFXIV")) || {};
+    for (const inputId in inputData) {
+        if (inputData.hasOwnProperty(inputId)) {
+            document.getElementById(inputId).value = inputData[inputId];
+        }
+    }
+}     
+
+// Function to save input data to localStorage
+function saveInputData() {
+    const inputData = {
+       //*****ARR*****
+        "amaljaa_rank": document.getElementById("amaljaa_rank").value,
+        "amaljaa_current_rep": document.getElementById("amaljaa_current_rep").value,
+    };
+    localStorage.setItem("AlliedSocietyFFXIV", JSON.stringify(inputData));
+}
+const element_amaljaa_rank = document.getElementById("amaljaa_rank");
+const element_maljaa_current_rep = document.getElementById("maljaa_current_rep")
+
+
 // Now, let's create a function that will calculate what we need to max out a tribe.
 
 function calculateTribeProgression(tribe, currentReputation, currentRank) {
@@ -303,4 +325,11 @@ function calculateTribeProgression(tribe, currentReputation, currentRank) {
         // We divide by 3 because we can only do 3 quests per day.
         "daysNeededToNextRank": Math.ceil((tribeData.reputationData.reputationNeeded[rankIndex] - currentReputation) / tribeData.reputationData.reputationGainedPerTurnin[rankIndex] / 3),
     }
+     // Save input data to localStorage
+    saveInputData();
 }
+// Load input data from localStorage on page load
+loadInputData();
+
+// Call calculateXP() on the first load
+calculateTribeProgression(amaljaa, amaljaa_current_rep, amaljaa_rank);
