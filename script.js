@@ -273,7 +273,7 @@ function loadInputData() {
 }     
 
 // Function to save input data to localStorage
-function saveInputData() {
+function saveInputData(tribe) {
     const inputData = {
         [`${tribe}_rank`]: document.getElementByID(`${tribe}_rank`).value,
         [`${tribe}_current_rep`]: document.getElementByID(`${tribe}_current_rep`).value,
