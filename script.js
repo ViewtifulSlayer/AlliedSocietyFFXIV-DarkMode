@@ -334,4 +334,4 @@ function calculateTribeProgression(tribe) {
 loadInputData();
 
 // Call calculatetribeprogression() on the first load
-calculateTribeProgression(amaljaa, amaljaa_current_rep, amaljaa_rank);
+calculateTribeProgression(amaljaa);
