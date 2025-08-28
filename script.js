@@ -331,5 +331,5 @@ function calculateTribeProgression(tribe, currentReputation, currentRank) {
 // Load input data from localStorage on page load
 loadInputData();
 
-// Call calculateXP() on the first load
+// Call calculatetribeprogression() on the first load
 calculateTribeProgression(amaljaa, amaljaa_current_rep, amaljaa_rank);
