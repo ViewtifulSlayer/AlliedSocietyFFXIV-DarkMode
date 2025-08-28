@@ -13,4 +13,4 @@ The page is hosted on Github Actions! Go to the site to use it.
 
 ## helpers:
 
-[@belthesar](https://github.com/belthesar) for the intial setup and help based on [the ffixv pvp malmstone calculator made in java ](https://github.com/belthesar/MalmstoneXPCalculator)
+[@belthesar](https://github.com/belthesar) for the intial setup and help based on [the ffixv pvp malmstone calculator](https://github.com/belthesar/MalmstoneXPCalculator)
