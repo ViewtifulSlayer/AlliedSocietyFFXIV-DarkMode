@@ -225,37 +225,37 @@ const TRIBE_DATA = [
         "id": "dwarves",
         "reputationData": TRIBE_REPUTATION_DATA.find(tribe => tribe.tribe_type === "shb"),
         "daysNeededToMax": 31
-    }
+    },
     {
         "name": "Arkasodara",
         "id": "arkasodara",
         "reputationData": TRIBE_REPUTATION_DATA.find(tribe => tribe.tribe_type === "ew"),
         "daysNeededToMax": 31
-    }
+    },
     {
         "name": "Omicron",
         "id": "omicron",
         "reputationData": TRIBE_REPUTATION_DATA.find(tribe => tribe.tribe_type === "ew"),
         "daysNeededToMax": 31
-    }
+    },
     {
         "name": "Loporabit",
         "id": "loporabit",
         "reputationData": TRIBE_REPUTATION_DATA.find(tribe => tribe.tribe_type === "ew"),
         "daysNeededToMax": 31
-    }    
+    }, 
     {
         "name": "PeluPelu",
         "id": "pelupelu",
         "reputationData": TRIBE_REPUTATION_DATA.find(tribe => tribe.tribe_type === "dt"),
         "daysNeededToMax": 31
-    }
+    },
     {
         "name": "Mamool Ja",
         "id": "mamoolja",
         "reputationData": TRIBE_REPUTATION_DATA.find(tribe => tribe.tribe_type === "dt"),
         "daysNeededToMax": 31
-    }
+    },
     {
         "name": "Yok Huy",
         "id": "Yok Huy",
