@@ -285,10 +285,10 @@ window.onload = function() {
  const AllInputss = document.getElementsByClassName("input");
  console.log();
  For (let i = 0;i < AllInputs.length; i++) {
-  AllInputs[i].AddEventListener("change" function() {
+  AllInputs[i].AddEventListener("change", function() {
    const tribe = this.id.split("_")[0]; //get tribe name from input field ID
    SaveInputData(tribe);
-  }
+  });
  }
 }
      
