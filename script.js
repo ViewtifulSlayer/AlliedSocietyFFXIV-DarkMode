@@ -275,15 +275,22 @@ function loadInputData() {
 // Function to save input data to localStorage
 function saveInputData() {
     const inputData = {
-        "_rank": document.getElementByClass("rank").value, //TODO
-        "_current_rep": document.getElementByClass("current_rep").value, //TODO
+        [`${tribe}_rank`]: document.getElementByID(`${tribe}_rank`).value,
+        [`${tribe}_current_rep`]: document.getElementByID(`${tribe}_current_rep`).value,
     };
     localStorage.setItem("AlliedSocietyFFXIV", JSON.stringify(inputData));
 }
-const element_amaljaa_rank = document.getElementById("amaljaa_rank");
-const element_maljaa_current_rep = document.getElementById("maljaa_current_rep")
 
-
+window.onload = function() {
+ const AllInputss = document.getElementsByClassName("input");
+ For (let i = 0;i < AllInputs.length; i++) {
+  AllInputs[i].AddEventListener("change" function() {
+   const tribe = this.id.split("_")[0]; //get tribe name from input field ID
+   SaveInputData(tribe);
+  }
+ }
+}
+     
 // Now, let's create a function that will calculate what we need to max out a tribe.
 
 function calculateTribeProgression(tribe) {
