@@ -1,9 +1,778 @@
 <!DOCTYPE html>
 <html>
 <head>
-  
+  <title>FFXIV Tribe Tracker</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" >
+  <link href="style.css" rel="stylesheet">
 </head>
 <body>
+  <h1>FFXIV Tribe tracker</h1>
+  <div class="expansion" id="ARR">
+    <h1>ARR Tribes</h1>
 
+       <div class="tribe" id="amaljaa">
+<div class="tribe_header">
+     <h2>Amal'jaa</h2>
+     <img src="images/Amalj'aa_Relations.png" class="tribe_icon">
+</div>
+
+     <h3>Current Rank:</h3>
+       <select class="rank" id="amaljaa_rank">
+        <option value="1">1. Neutral</option>
+        <option value="2">2. Recognized</option>
+        <option value="3">3. Friendly</option>
+        <option value="4">4. Trusted</option>
+      </select>
+     <h3>Current Rep:</h3>
+      <input type="number" name="current_rep" id="amaljaa_current_rep" value="0">
+      <h3>Results:</h3>
+      <table>
+        <thead>
+        <tr>
+          <th> </th>
+          <th>To next Rank:</th>
+          <th>To Max:</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th>Rep:</th>
+           <td id="amaljaa_reputation_to_next_Rank" ></td>
+           <td id="amaljaa_reputation_to_max"></td>
+        </tr>
+        <tr>
+          <th>Quests:</th>
+           <td id="amaljaa_quests_to_next_Rank" ></td>
+           <td id="amaljaa_quests_to_max"></td>
+        </tr>
+        <tr>
+          <th>Days:</th>
+           <td id="amaljaa_days_to_next_Rank" ></td>
+           <td id="amaljaa_days_to_max"></td>
+        </tr>
+        </tbody>
+      </table>   
+   </div>
+       <div class="tribe" id="kobold">
+<div class="tribe_header">
+     <h2>Kobold</h2>
+     <img src="images/Kobold_Relations.png" class="tribe_icon">
+</div>
+     <h3>Current Rank:</h3>
+       <select class="rank" id="kobold_rank">
+        <option value="1">1. Neutral</option>
+        <option value="2">2. Recognized</option>
+        <option value="3">3. Friendly</option>
+        <option value="4">4. Trusted</option>
+      </select>
+     <h3>Current Rep:</h3>
+      <input type="number" name="current_rep" id="kobold_current_rep" value="0">
+      <h3>Results:</h3>
+      <table>
+        <thead>
+        <tr>
+          <th> </th>
+          <th>To next Rank:</th>
+          <th>To Max:</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th>Rep:</th>
+           <td id="kobold_reputation_to_next_Rank" ></td>
+           <td id="kobold_reputation_to_max"></td>
+        </tr>
+        <tr>
+          <th>Quests:</th>
+           <td id="kobold_quests_to_next_Rank" ></td>
+           <td id="kobold_quests_to_max"></td>
+        </tr>
+        <tr>
+          <th>Days:</th>
+           <td id="kobold_days_to_next_Rank" ></td>
+           <td id="kobold_days_to_max"></td>
+        </tr>
+        </tbody>
+      </table>   
+   </div>
+       <div class="tribe" id="sahagin">
+<div class="tribe_header">
+     <h2>Sahagin</h2>
+     <img src="images/Sahagin_Relations.png" class="tribe_icon">
+</div>
+     <h3>Current Rank:</h3>
+       <select class="rank" id="sahagin_rank">
+        <option value="1">1. Neutral</option>
+        <option value="2">2. Recognized</option>
+        <option value="3">3. Friendly</option>
+        <option value="4">4. Trusted</option>
+      </select>
+     <h3>Current Rep:</h3>
+      <input type="number" name="current_rep" id="sahagin_current_rep" value="0">
+      <h3>Results:</h3>
+      <table>
+        <thead>
+        <tr>
+          <th> </th>
+          <th>To next Rank:</th>
+          <th>To Max:</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th>Rep:</th>
+           <td id="sahagin_reputation_to_next_Rank" ></td>
+           <td id="sahagin_reputation_to_max"></td>
+        </tr>
+        <tr>
+          <th>Quests:</th>
+           <td id="sahagin_quests_to_next_Rank" ></td>
+           <td id="sahagin_quests_to_max"></td>
+        </tr>
+        <tr>
+          <th>Days:</th>
+           <td id="sahagin_days_to_next_Rank" ></td>
+           <td id="sahagin_days_to_max"></td>
+        </tr>
+        </tbody>
+      </table>   
+   </div>
+       <div class="tribe" id="sylph">
+<div class="tribe_header">
+     <h2>Sylph</h2>
+     <img src="images/Sylphic_Relations.png" class="tribe_icon">
+</div>
+     <h3>Current Rank:</h3>
+       <select class="rank" id="sylph_rank">
+        <option value="1">1. Neutral</option>
+        <option value="2">2. Recognized</option>
+        <option value="3">3. Friendly</option>
+        <option value="4">4. Trusted</option>
+      </select>
+     <h3>Current Rep:</h3>
+      <input type="number" name="current_rep" id="sylph_current_rep" value="0">
+      <h3>Results:</h3>
+      <table>
+        <thead>
+        <tr>
+          <th> </th>
+          <th>To next Rank:</th>
+          <th>To Max:</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th>Rep:</th>
+           <td id="sylph_reputation_to_next_Rank" ></td>
+           <td id="sylph_reputation_to_max"></td>
+        </tr>
+        <tr>
+          <th>Quests:</th>
+           <td id="sylph_quests_to_next_Rank" ></td>
+           <td id="sylph_quests_to_max"></td>
+        </tr>
+        <tr>
+          <th>Days:</th>
+           <td id="sylph_days_to_next_Rank" ></td>
+           <td id="sylph_days_to_max"></td>
+        </tr>
+        </tbody>
+      </table>   
+   </div>
+       <div class="tribe" id="ixal">
+<div class="tribe_header">
+     <h2>Ixal</h2>
+     <img src="images/Ixali_Relations.png" class="tribe_icon">
+</div>
+     <h3>Current Rank:</h3>
+       <select class="rank" id="ixal_rank">
+        <option value="1">1. Neutral</option>
+        <option value="2">2. Recognized</option>
+        <option value="3">3. Friendly</option>
+        <option value="4">4. Trusted</option>
+        <option value="5">5. Respected</option>
+       <option value="6">6. Honored</option>
+        <option value="7">7. Sworn</option>
+      </select>
+     <h3>Current Rep:</h3>
+      <input type="number" name="current_rep" id="ixal_current_rep" value="0">
+      <h3>Results:</h3>
+      <table>
+        <thead>
+        <tr>
+          <th> </th>
+          <th>To next Rank:</th>
+          <th>To Max:</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th>Rep:</th>
+           <td id="ixal_reputation_to_next_Rank" ></td>
+           <td id="ixal_reputation_to_max"></td>
+        </tr>
+        <tr>
+          <th>Quests:</th>
+           <td id="ixal_quests_to_next_Rank" ></td>
+           <td id="ixal_quests_to_max"></td>
+        </tr>
+        <tr>
+          <th>Days:</th>
+           <td id="ixal_days_to_next_Rank" ></td>
+           <td id="ixal_days_to_max"></td>
+        </tr>
+        </tbody>
+      </table>   
+   </div>
+  </div>
+  <div class="expansion" id="HW">
+    <h1>Heavensward Tribes</h1>
+
+       <div class="tribe" id="moogle">
+<div class="tribe_header">
+     <h2>Moogle</h2>
+     <img src="images/Moogle_Relations.png" class="tribe_icon">
+</div>
+     <h3>Current Rank:</h3>
+       <select class="rank" id="moogle_rank">
+        <option value="1">1. Neutral</option>
+        <option value="2">2. Recognized</option>
+        <option value="3">3. Friendly</option>
+        <option value="4">4. Trusted</option>
+        <option value="5">5. Respected</option>
+       <option value="6">6. Honored</option>
+        <option value="7">7. Sworn</option>
+        <option value="8">8. Bloodsworn</option>
+      </select>
+     <h3>Current Rep:</h3>
+      <input type="number" name="current_rep" id="moogle_current_rep" value="0">
+      <h3>Results:</h3>
+      <table>
+        <thead>
+        <tr>
+          <th> </th>
+          <th>To next Rank:</th>
+          <th>To Max:</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th>Rep:</th>
+           <td id="moogle_reputation_to_next_Rank" ></td>
+           <td id="moogle_reputation_to_max"></td>
+        </tr>
+        <tr>
+          <th>Quests:</th>
+           <td id="moogle_quests_to_next_Rank" ></td>
+           <td id="moogle_quests_to_max"></td>
+        </tr>
+        <tr>
+          <th>Days:</th>
+           <td id="moogle_days_to_next_Rank" ></td>
+           <td id="moogle_days_to_max"></td>
+        </tr>
+        </tbody>
+      </table>   
+   </div>
+       <div class="tribe" id="vath">
+<div class="tribe_header">
+     <h2>Vath</h2>
+     <img src="images/Vath_Relations.png" class="tribe_icon">
+</div>
+     <h3>Current Rank:</h3>
+       <select class="rank" id="vath_rank">
+        <option value="3">3. Friendly</option>
+        <option value="4">4. Trusted</option>
+        <option value="5">5. Respected</option>
+       <option value="6">6. Honored</option>
+        <option value="7">7. Sworn</option>
+        <option value="8">8. Bloodsworn</option>
+      </select>
+     <h3>Current Rep:</h3>
+      <input type="number" name="current_rep" id="vath_current_rep" value="0">
+      <h3>Results:</h3>
+      <table>
+        <thead>
+        <tr>
+          <th> </th>
+          <th>To next Rank:</th>
+          <th>To Max:</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th>Rep:</th>
+           <td id="vath_reputation_to_next_Rank" ></td>
+           <td id="vath_reputation_to_max"></td>
+        </tr>
+        <tr>
+          <th>Quests:</th>
+           <td id="vath_quests_to_next_Rank" ></td>
+           <td id="vath_quests_to_max"></td>
+        </tr>
+        <tr>
+          <th>Days:</th>
+           <td id="vath_days_to_next_Rank" ></td>
+           <td id="vath_days_to_max"></td>
+        </tr>
+        </tbody>
+      </table>   
+   </div>
+       <div class="tribe" id="vanuvanu">
+<div class="tribe_header">
+     <h2>Vanu Vanu</h2>
+     <img src="images/Vanu_Relations.png" class="tribe_icon">
+</div>
+     <h3>Current Rank:</h3>
+       <select class="rank" id="vanuvanu_rank">
+        <option value="1">1. Neutral</option>
+        <option value="2">2. Recognized</option>
+        <option value="3">3. Friendly</option>
+        <option value="4">4. Trusted</option>
+        <option value="5">5. Respected</option>
+       <option value="6">6. Honored</option>
+        <option value="7">7. Sworn</option>
+        <option value="8">8. Bloodsworn</option>
+      </select>
+     <h3>Current Rep:</h3>
+      <input type="number" name="current_rep" id="vanuvanu_current_rep" value="0">
+      <h3>Results:</h3>
+      <table>
+        <thead>
+        <tr>
+          <th> </th>
+          <th>To next Rank:</th>
+          <th>To Max:</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th>Rep:</th>
+           <td id="vanuvanu_reputation_to_next_Rank" ></td>
+           <td id="vanuvanu_reputation_to_max"></td>
+        </tr>
+        <tr>
+          <th>Quests:</th>
+           <td id="vanuvanu_quests_to_next_Rank" ></td>
+           <td id="vanuvanu_quests_to_max"></td>
+        </tr>
+        <tr>
+          <th>Days:</th>
+           <td id="vanuvanu_days_to_next_Rank" ></td>
+           <td id="vanuvanu_days_to_max"></td>
+        </tr>
+        </tbody>
+      </table>   
+   </div>
+  </div>
+    <div class="expansion" id="SB">
+    <h1>Stormblood Tribes</h1>
+
+       <div class="tribe" id="anata">
+<div class="tribe_header">
+     <h2>Anata</h2>
+     <img src="images/Ananta_Relations.png" class="tribe_icon">
+</div>
+     <h3>Current Rank:</h3>
+       <select class="rank" id="anata_rank">
+        <option value="3">3. Friendly</option>
+        <option value="4">4. Trusted</option>
+        <option value="5">5. Respected</option>
+       <option value="6">6. Honored</option>
+        <option value="7">7. Sworn</option>
+        <option value="8">8. Bloodsworn</option>
+      </select>
+     <h3>Current Rep:</h3>
+      <input type="number" name="current_rep" id="anata_current_rep" value="0">
+      <h3>Results:</h3>
+      <table>
+        <thead>
+        <tr>
+          <th> </th>
+          <th>To next Rank:</th>
+          <th>To Max:</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th>Rep:</th>
+           <td id="anata_reputation_to_next_Rank" ></td>
+           <td id="anata_reputation_to_max"></td>
+        </tr>
+        <tr>
+          <th>Quests:</th>
+           <td id="anata_quests_to_next_Rank" ></td>
+           <td id="anata_quests_to_max"></td>
+        </tr>
+        <tr>
+          <th>Days:</th>
+           <td id="anata_days_to_next_Rank" ></td>
+           <td id="anata_days_to_max"></td>
+        </tr>
+        </tbody>
+      </table>   
+   </div>
+       <div class="tribe" id="kojin">
+<div class="tribe_header">
+     <h2>Kojin</h2>
+     <img src="images/Kojin_Relations.png" class="tribe_icon">
+</div>
+     <h3>Current Rank:</h3>
+       <select class="rank" id="kojin_rank">
+        <option value="3">3. Friendly</option>
+        <option value="4">4. Trusted</option>
+        <option value="5">5. Respected</option>
+       <option value="6">6. Honored</option>
+        <option value="7">7. Sworn</option>
+        <option value="8">8. Bloodsworn</option>
+      </select>
+     <h3>Current Rep:</h3>
+      <input type="number" name="current_rep" id="kojin_current_rep" value="0">
+      <h3>Results:</h3>
+      <table>
+        <thead>
+        <tr>
+          <th> </th>
+          <th>To next Rank:</th>
+          <th>To Max:</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th>Rep:</th>
+           <td id="kojin_reputation_to_next_Rank" ></td>
+           <td id="kojin_reputation_to_max"></td>
+        </tr>
+        <tr>
+          <th>Quests:</th>
+           <td id="kojin_quests_to_next_Rank" ></td>
+           <td id="kojin_quests_to_max"></td>
+        </tr>
+        <tr>
+          <th>Days:</th>
+           <td id="kojin_days_to_next_Rank" ></td>
+           <td id="kojin_days_to_max"></td>
+        </tr>
+        </tbody>
+      </table>   
+   </div>
+       <div class="tribe" id="namazu">
+<div class="tribe_header">
+     <h2>Namazu</h2>
+     <img src="images/Namazu_Relations.png" class="tribe_icon">
+</div>
+     <h3>Current Rank:</h3>
+       <select class="rank" id="namazu_rank">
+        <option value="3">3. Friendly</option>
+        <option value="4">4. Trusted</option>
+        <option value="5">5. Respected</option>
+       <option value="6">6. Honored</option>
+        <option value="7">7. Sworn</option>
+        <option value="8">8. Bloodsworn</option>
+      </select>
+     <h3>Current Rep:</h3>
+      <input type="number" name="current_rep" id="namazu_current_rep" value="0">
+      <h3>Results:</h3>
+      <table>
+        <thead>
+        <tr>
+          <th> </th>
+          <th>To next Rank:</th>
+          <th>To Max:</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th>Rep:</th>
+           <td id="namazu_reputation_to_next_Rank" ></td>
+           <td id="namazu_reputation_to_max"></td>
+        </tr>
+        <tr>
+          <th>Quests:</th>
+           <td id="namazu_quests_to_next_Rank" ></td>
+           <td id="namazu_quests_to_max"></td>
+        </tr>
+        <tr>
+          <th>Days:</th>
+           <td id="namazu_days_to_next_Rank" ></td>
+           <td id="namazu_days_to_max"></td>
+        </tr>
+        </tbody>
+      </table>   
+   </div>
+  </div>
+      <div class="expansion" id="SHB">
+    <h1>Shadowbringers Tribes</h1>
+
+       <div class="tribe" id="pixie">
+<div class="tribe_header">
+     <h2>Pixie</h2>
+     <img src="images/Dreamspinners_Relations.png" class="tribe_icon">
+</div>
+     <h3>Current Rank:</h3>
+       <select class="rank" id="pixie_rank">
+        <option value="3">3. Friendly</option>
+        <option value="4">4. Trusted</option>
+        <option value="5">5. Respected</option>
+       <option value="6">6. Honored</option>
+        <option value="7">7. Sworn</option>
+        <option value="8">8. Bloodsworn</option>
+      </select>
+     <h3>Current Rep:</h3>
+      <input type="number" name="current_rep" id="pixie_current_rep" value="0">
+      <h3>Results:</h3>
+      <table>
+        <thead>
+        <tr>
+          <th> </th>
+          <th>To next Rank:</th>
+          <th>To Max:</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th>Rep:</th>
+           <td id="pixie_reputation_to_next_Rank" ></td>
+           <td id="pixie_reputation_to_max"></td>
+        </tr>
+        <tr>
+          <th>Quests:</th>
+           <td id="pixie_quests_to_next_Rank" ></td>
+           <td id="pixie_quests_to_max"></td>
+        </tr>
+        <tr>
+          <th>Days:</th>
+           <td id="pixie_days_to_next_Rank" ></td>
+           <td id="pixie_days_to_max"></td>
+        </tr>
+        </tbody>
+      </table>   
+   </div>
+       <div class="tribe" id="qitari">
+<div class="tribe_header">
+     <h2>Qitari</h2>
+     <img src="images/Stewards_Relations.png" class="tribe_icon">
+</div>
+     <h3>Current Rank:</h3>
+       <select class="rank" id="qitari_rank">
+        <option value="3">3. Friendly</option>
+        <option value="4">4. Trusted</option>
+        <option value="5">5. Respected</option>
+       <option value="6">6. Honored</option>
+        <option value="7">7. Sworn</option>
+        <option value="8">8. Bloodsworn</option>
+      </select>
+     <h3>Current Rep:</h3>
+      <input type="number" name="current_rep" id="qitari_current_rep" value="0">
+      <h3>Results:</h3>
+      <table>
+        <thead>
+        <tr>
+          <th> </th>
+          <th>To next Rank:</th>
+          <th>To Max:</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th>Rep:</th>
+           <td id="qitari_reputation_to_next_Rank" ></td>
+           <td id="qitari_reputation_to_max"></td>
+        </tr>
+        <tr>
+          <th>Quests:</th>
+           <td id="qitari_quests_to_next_Rank" ></td>
+           <td id="qitari_quests_to_max"></td>
+        </tr>
+        <tr>
+          <th>Days:</th>
+           <td id="qitari_days_to_next_Rank" ></td>
+           <td id="qitari_days_to_max"></td>
+        </tr>
+        </tbody>
+      </table>   
+   </div>
+       <div class="tribe" id="dwarf">
+<div class="tribe_header">
+     <h2>Dwarf</h2>
+     <img src="images/Dwarf_Relations.png" class="tribe_icon">
+</div>
+     <h3>Current Rank:</h3>
+       <select class="rank" id="dwarf_rank">
+        <option value="3">3. Friendly</option>
+        <option value="4">4. Trusted</option>
+        <option value="5">5. Respected</option>
+       <option value="6">6. Honored</option>
+        <option value="7">7. Sworn</option>
+        <option value="8">8. Bloodsworn</option>
+      </select>
+     <h3>Current Rep:</h3>
+      <input type="number" name="current_rep" id="dwarf_current_rep" value="0">
+      <h3>Results:</h3>
+      <table>
+        <thead>
+        <tr>
+          <th> </th>
+          <th>To next Rank:</th>
+          <th>To Max:</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th>Rep:</th>
+           <td id="dwarf_reputation_to_next_Rank" ></td>
+           <td id="dwarf_reputation_to_max"></td>
+        </tr>
+        <tr>
+          <th>Quests:</th>
+           <td id="dwarf_quests_to_next_Rank" ></td>
+           <td id="dwarf_quests_to_max"></td>
+        </tr>
+        <tr>
+          <th>Days:</th>
+           <td id="dwarf_days_to_next_Rank" ></td>
+           <td id="dwarf_days_to_max"></td>
+        </tr>
+        </tbody>
+      </table>   
+   </div>
+  </div>
+        <div class="expansion" id="EW">
+    <h1>Endwalker Tribes</h1>
+
+       <div class="tribe" id="arkasodara">
+<div class="tribe_header">
+     <h2>Arkasodara</h2>
+     <img src="images/Arkasodara_Relations.png" class="tribe_icon">
+</div>
+     <h3>Current Rank:</h3>
+       <select class="rank" id="arkasodara_rank">
+        <option value="3">3. Friendly</option>
+        <option value="4">4. Trusted</option>
+        <option value="5">5. Respected</option>
+       <option value="6">6. Honored</option>
+        <option value="7">7. Sworn</option>
+        <option value="8">8. Bloodsworn</option>
+      </select>
+     <h3>Current Rep:</h3>
+      <input type="number" name="current_rep" id="arkasodara_current_rep" value="0">
+      <h3>Results:</h3>
+      <table>
+        <thead>
+        <tr>
+          <th> </th>
+          <th>To next Rank:</th>
+          <th>To Max:</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th>Rep:</th>
+           <td id="arkasodara_reputation_to_next_Rank" ></td>
+           <td id="arkasodara_reputation_to_max"></td>
+        </tr>
+        <tr>
+          <th>Quests:</th>
+           <td id="arkasodara_quests_to_next_Rank" ></td>
+           <td id="arkasodara_quests_to_max"></td>
+        </tr>
+        <tr>
+          <th>Days:</th>
+           <td id="arkasodara_days_to_next_Rank" ></td>
+           <td id="arkasodara_days_to_max"></td>
+        </tr>
+        </tbody>
+      </table>   
+   </div>
+       <div class="tribe" id="omicron">
+<div class="tribe_header">
+     <h2>Omicron</h2>
+     <img src="images/Omicron_Relations.png" class="tribe_icon">
+</div>
+     <h3>Current Rank:</h3>
+       <select class="rank" id="omicron_rank">
+        <option value="3">3. Friendly</option>
+        <option value="4">4. Trusted</option>
+        <option value="5">5. Respected</option>
+       <option value="6">6. Honored</option>
+        <option value="7">7. Sworn</option>
+        <option value="8">8. Bloodsworn</option>
+      </select>
+     <h3>Current Rep:</h3>
+      <input type="number" name="current_rep" id="omicron_current_rep" value="0">
+      <h3>Results:</h3>
+      <table>
+        <thead>
+        <tr>
+          <th> </th>
+          <th>To next Rank:</th>
+          <th>To Max:</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th>Rep:</th>
+           <td id="omicron_reputation_to_next_Rank" ></td>
+           <td id="omicron_reputation_to_max"></td>
+        </tr>
+        <tr>
+          <th>Quests:</th>
+           <td id="omicron_quests_to_next_Rank" ></td>
+           <td id="omicron_quests_to_max"></td>
+        </tr>
+        <tr>
+          <th>Days:</th>
+           <td id="omicron_days_to_next_Rank" ></td>
+           <td id="omicron_days_to_max"></td>
+        </tr>
+        </tbody>
+      </table>   
+   </div>
+       <div class="tribe" id="loporrit">
+<div class="tribe_header">
+     <h2>Loporrit</h2>
+     <img src="images/Loporrit_Relations.png" class="tribe_icon">
+</div>
+     <h3>Current Rank:</h3>
+       <select class="rank" id="loporrit_rank">
+        <option value="3">3. Friendly</option>
+        <option value="4">4. Trusted</option>
+        <option value="5">5. Respected</option>
+       <option value="6">6. Honored</option>
+        <option value="7">7. Sworn</option>
+        <option value="8">8. Bloodsworn</option>
+      </select>
+     <h3>Current Rep:</h3>
+      <input type="number" name="current_rep" id="loporrit_current_rep" value="0">
+      <h3>Results:</h3>
+      <table>
+        <thead>
+        <tr>
+          <th> </th>
+          <th>To next Rank:</th>
+          <th>To Max:</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th>Rep:</th>
+           <td id="loporrit_reputation_to_next_Rank" ></td>
+           <td id="loporrit_reputation_to_max"></td>
+        </tr>
+        <tr>
+          <th>Quests:</th>
+           <td id="loporrit_quests_to_next_Rank" ></td>
+           <td id="loporrit_quests_to_max"></td>
+        </tr>
+        <tr>
+          <th>Days:</th>
+           <td id="loporrit_days_to_next_Rank" ></td>
+           <td id="loporrit_days_to_max"></td>
+        </tr>
+        </tbody>
+      </table>   
+   </div>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
