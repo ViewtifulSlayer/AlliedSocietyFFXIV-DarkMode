@@ -4,6 +4,8 @@ Helper site to calculate how many days you need to complete Tribes in Final Fant
 ## How to use
 The page is hosted on Github Actions! Go to the site to use it.
 
+https://cirivere.github.io/AlliedSocietyFFXIV/
+
 * Fill in your current rank and xp for all Tribes you have leveled
 * The page saves the values you input in local storage in your browser, for easy use later! 
 
