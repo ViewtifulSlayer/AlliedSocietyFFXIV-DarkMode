@@ -1,6 +1,3 @@
-
-
-
 // Create a list of tribes with their progression information.
 const TRIBE_REPUTATION_DATA = [
  {
@@ -287,7 +284,7 @@ function saveInputData(tribe) {
 window.onload = function() {
  const AllInputs = document.getElementsByClassName("input"); //collect all inputs
  console.log()
- For (var i=0; i<5; i++) { //for the size of all inputs repeat checking if input changes
+ For (let i=0; i<5; i++) { //for the size of all inputs repeat checking if input changes
   AllInputs[i].AddEventListener("change", function() {
    const tribe = this.id.split("_")[0]; //get tribe name from input field ID
    SaveInputData(tribe);
