@@ -16,5 +16,7 @@ https://cirivere.github.io/AlliedSocietyFFXIV/
 ## helpers:
 
 [@belthesar](https://github.com/belthesar) for the intial setup and help based on [the ffixv pvp malmstone calculator](https://github.com/belthesar/MalmstoneXPCalculator). thank you so much for giving me the courage to start this project! 
-[@miry-0226](https://github.com/Miry-0226) for helping me a lot with the savedata function help!! Thank you so much for helping me get the courage to pick things up again
+
+[@miry-0226](https://github.com/Miry-0226) for helping me a lot with the savedata function help!! Thank you so much for helping me get the courage to pick things up again.
+
 [@capashilli](https://github.com/capashilli) for many error solving help and code advice!! thank you very much for your quick responses and willingness to look into my mess of a code. Thanks to you I will see this through
