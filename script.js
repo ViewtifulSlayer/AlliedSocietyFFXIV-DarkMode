@@ -1,7 +1,7 @@
 // Create a list of tribes with their progression information.
 const TRIBE_REPUTATION_DATA = [
  {
-        "tribeType": "arr",
+        "tribe_type": "arr",
         "reputationNeeded": [
             150,
             360,
