@@ -284,10 +284,11 @@ function saveInputData(tribe) {
 window.onload = function() {
  const AllInputs = document.getElementsByClassName("input"); //collect all inputs
  console.log()
- for (let i=0; i<5; i++) { //for the size of all inputs repeat checking if input changes
-  AllInputs[i].AddEventListener("change", function() {
+ for (let i=0; i< AllInputs.length; i++) { //for the size of all inputs repeat checking if input changes
+  AllInputs[i].addEventListener("change", function() {
+   //somehow I need to log somehting with the ID? of "this" and then I can split it
    const tribe = this.id.split("_")[0]; //get tribe name from input field ID
-   SaveInputData(tribe);
+   saveInputData(tribe);
   });
  }
 }
@@ -343,4 +344,4 @@ function calculateTribeProgression(tribe) {
 loadInputData();
 
 // Call calculatetribeprogression() on the first load
-calculateTribeProgression(amaljaa);
+calculateTribeProgression('amaljaa');
