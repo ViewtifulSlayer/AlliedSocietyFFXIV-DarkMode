@@ -275,8 +275,8 @@ function loadInputData() {
 // Function to save input data to localStorage
 function saveInputData(tribe) {
     const inputData = {
-        [`${tribe}_rank`]: document.getElementByID(`${tribe}_rank`).value,
-        [`${tribe}_current_rep`]: document.getElementByID(`${tribe}_current_rep`).value,
+        [`${tribe}_rank`]: document.getElementById(`${tribe}_rank`).value,
+        [`${tribe}_current_rep`]: document.getElementById(`${tribe}_current_rep`).value,
     };
     localStorage.setItem("AlliedSocietyFFXIV", JSON.stringify(inputData));
 }
