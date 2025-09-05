@@ -279,11 +279,6 @@ function saveInputData(tribe) {
         [`${tribe}_current_rep`]: document.getElementById(`${tribe}_current_rep`).value,
     };
     localStorage.setItem("AlliedSocietyFFXIV", JSON.stringify(inputData));
-  let newInputData = { 
-  ...inputData,
-  [`${tribe}_rank`]: document.getElementById(`${tribe}_rank`).value,
-  [`${tribe}_current_rep`]: document.getElementById(`${tribe}_current_rep`).value,
-};
 }
 
 window.onload = function() {
@@ -291,7 +286,6 @@ window.onload = function() {
  console.log()
  for (let i=0; i< AllInputs.length; i++) { //for the size of all inputs repeat checking if input changes
   AllInputs[i].addEventListener("change", function() {
-   //somehow I need to log somehting with the ID? of "this" and then I can split it
    const tribe = this.id.split("_")[0]; //get tribe name from input field ID
    saveInputData(tribe);
   });
