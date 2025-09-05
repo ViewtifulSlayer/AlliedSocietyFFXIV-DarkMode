@@ -288,9 +288,10 @@ window.onload = function() {
   AllInputs[i].AddEventListener("change", function() {
    const tribe = this.id.split("_")[0]; //get tribe name from input field ID
    SaveInputData(tribe);
-  )
- };
+  });
+ }
 }
+
      
 // Now, let's create a function that will calculate what we need to max out a tribe.
 
