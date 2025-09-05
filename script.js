@@ -279,6 +279,11 @@ function saveInputData(tribe) {
         [`${tribe}_current_rep`]: document.getElementById(`${tribe}_current_rep`).value,
     };
     localStorage.setItem("AlliedSocietyFFXIV", JSON.stringify(inputData));
+  let newInputData = { 
+  ...inputData,
+  [`${tribe}_rank`]: document.getElementById(`${tribe}_rank`).value,
+  [`${tribe}_current_rep`]: document.getElementById(`${tribe}_current_rep`).value,
+};
 }
 
 window.onload = function() {
