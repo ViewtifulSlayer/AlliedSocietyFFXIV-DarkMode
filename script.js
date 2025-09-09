@@ -265,28 +265,41 @@ const TRIBE_DATA = [
 ]
 
 function loadInputData() {
-    const inputData = JSON.parse(localStorage.getItem("AlliedSocietyFFXIV")) || {};
-    for (const inputId in inputData) {
-        if (inputData.hasOwnProperty(inputId)) {
-            document.getElementById(inputId).value = inputData[inputId];
-        }
-    }
-}     
-
-// Function to save input data to localStorag
-function saveInputData() {
-  const AllTribe = document.getElementsByClassName("rank"); //collect all tribes by identifying all declared ranks
-  
-  let inputData = {};
-    for (let j=0; j< AllTribe.length; j++) { //for the size of all inputs keep checking values
-    const tribe = AllTribe[j].id.split("_")[0]; //get tribe name from input field ID
-    inputData[j] = {
-        [`${tribe}_rank`]: document.getElementById(`${tribe}_rank`).value,
-        [`${tribe}_current_rep`]: document.getElementById(`${tribe}_current_rep`).value,
-    };
-         localStorage.setItem("AlliedSocietyFFXIV", JSON.stringify(inputData));
-    }
+  if(localStorage.getItem("AlliedSocietyFFXIV") === null) {
+    tribeState = {}
+  } else {
+    tribeState = JSON.parse(localStorage["AlliedSocietyFFXIV"]);
+  }
+  for (var tribe of Object.keys(tribeState)) {
+    
+    var tribeRankId = tribe + "_rank";
+    var tribeRepId = tribe + "_current_rep";
+    document.getElementById(tribeRankId).value = tribeState[tribe]["rank"];
+    document.getElementById(tribeRepId).value = tribeState[tribe]["rep"];
+  }
 }
+
+function saveInputData() {
+  var allTribes = document.getElementsByClassName(classNames="tribe");
+
+  var tribeState = {};
+
+  for (var tribeElement of allTribes) {
+    var tribe = tribeElement.id;
+    var tribeRankId = tribe + "_rank";
+    var tribeRepId = tribe + "_current_rep";
+
+    tribeState[tribe] = {
+      "rank": document.getElementById(tribeRankId).value,
+      "rep": document.getElementById(tribeRepId).value,
+    }
+  }
+
+  localStorage["AlliedSocietyFFXIV"] = JSON.stringify(tribeState)
+}
+
+
+
 
 window.onload = function() {
  const AllInputs = document.getElementsByClassName("input"); //collect all inputs
