@@ -263,6 +263,7 @@ const TRIBE_DATA = [
         "daysNeededToMax": 31
     } 
 ]
+
 function loadInputData() {
     const inputData = JSON.parse(localStorage.getItem("AlliedSocietyFFXIV")) || {};
     for (const inputId in inputData) {
@@ -272,13 +273,19 @@ function loadInputData() {
     }
 }     
 
-// Function to save input data to localStorage
-function saveInputData(tribe) {
-    const inputData = {
+// Function to save input data to localStorag
+function saveInputData() {
+  const AllTribe = document.getElementsByClassName("rank"); //collect all tribes by identifying all declared ranks
+  
+  let inputData = {};
+    for (let j=0; j< AllTribe.length; j++) { //for the size of all inputs keep checking values
+    const tribe = AllTribe[j].id.split("_")[0]; //get tribe name from input field ID
+    inputData[j] = {
         [`${tribe}_rank`]: document.getElementById(`${tribe}_rank`).value,
         [`${tribe}_current_rep`]: document.getElementById(`${tribe}_current_rep`).value,
     };
-    localStorage.setItem("AlliedSocietyFFXIV", JSON.stringify(inputData));
+         localStorage.setItem("AlliedSocietyFFXIV", JSON.stringify(inputData));
+    }
 }
 
 window.onload = function() {
@@ -286,8 +293,7 @@ window.onload = function() {
  console.log()
  for (let i=0; i< AllInputs.length; i++) { //for the size of all inputs repeat checking if input changes
   AllInputs[i].addEventListener("change", function() {
-   const tribe = this.id.split("_")[0]; //get tribe name from input field ID
-   saveInputData(tribe);
+   saveInputData();
   });
  }
 }
