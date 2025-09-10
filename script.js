@@ -257,8 +257,8 @@ const TRIBE_DATA = [
         "daysNeededToMax": 31
     },
     {
-        "name": "Yok Huy",
-        "id": "Yok Huy",
+        "name": "YokHuy",
+        "id": "YokHuy",
         "reputationData": TRIBE_REPUTATION_DATA.find(tribe => tribe.tribe_type === "dt"),
         "daysNeededToMax": 31
     } 
