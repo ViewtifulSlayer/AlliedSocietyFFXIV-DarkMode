@@ -315,7 +315,7 @@ window.onload = function() {
      
 // Now, let's create a function that will calculate what we need to max out a tribe.
 
-function calculateTribeProgression() {
+function calculateTribeProgression() {  
 var allTribes = document.getElementsByClassName(classNames="tribe"); //gwt total list of all tribes
   for (var tribeElement of allTribes) {
     //***********GETTING ALL ID AND CONSTANTS***************
@@ -370,8 +370,22 @@ var allTribes = document.getElementsByClassName(classNames="tribe"); //gwt total
     document.getElementById(tribeQuestsNextId).value = QuestsToNext;
     document.getElementById(tribeQuestsMaxId).value = QuestsToMax; 
     document.getElementById(tribeDaysNextId).value = DaysToNext;
-    document.getElementById(tribeDaysMaxId).value = DaysToMax;           
+    document.getElementById(tribeDaysMaxId).value = DaysToMax;   
+
+        
     }
+var AllQuests = document.getElementsByClassName(classNames="QuestsToMax");
+var AllDays = document.getElementsByClassName(classNames="DaysToMax");
+var totalQuests = 0;
+var totalDays = 0;
+    for(var i = 0; i < AllQuests.length; i++)
+    {
+        totalQuests = totalQuests +  parseInt(AllQuests[i].value);
+        totalDays = totalQuests +  parseInt(AllDays[i].value);
+    }
+ document.getElementById("total_quests_to_max").value = totalQuests;
+document.getElementById("total_days_to_max").value = totalDays;    
+   
 }
 // Load input data from localStorage on page load
 loadInputData();
