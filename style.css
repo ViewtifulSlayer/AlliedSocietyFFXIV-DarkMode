@@ -11,10 +11,9 @@ h1, h2 {
   color: #fff;
   padding: 10px;
 }
-h2 {    margin: 0px;
+h2 {    
+  margin: 0px;
 }
-
-
 select, input {
   color: #5483a1; 
   padding: 5px;
@@ -33,9 +32,10 @@ table, th, td {
   border-collapse: collapse;
 }
 
+
 .tribe_header {
   display: grid;
-  grid-template-columns: auto 50px;
+  grid-template-columns: auto auto auto;
   background: #0c707d;
 
 }
@@ -43,3 +43,13 @@ table, th, td {
 height: 50px;
 width: 50px;
 }
+
+.summary_result{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: block;
+  background: #bad8eb;
+}
+
+
