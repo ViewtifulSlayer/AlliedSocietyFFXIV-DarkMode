@@ -1,801 +1,394 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>FFXIV Tribe Tracker</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1" >
-  <link href="style.css" rel="stylesheet">
-</head>
-<body>
-  <h1>FFXIV Tribe tracker</h1>
-    <div class ="expansion">
-    <h1>ARR Tribes</h1>
+// Create a list of tribes with their progression information.
+const TRIBE_REPUTATION_DATA = [
+ {
+        "tribe_type": "arr",
+        "reputationNeeded": [
+            150,
+            360,
+            510,
+        ],
+        "reputationGainedPerTurnin": [
+            10,
+            14,
+            20,
+        ]
+    },
+    {
+        "tribe_type": "arr_ixal",
+        "reputationNeeded": [
+            150,
+            360,
+            510,
+            720,
+            990,
+            1320,
+        ],
+        "reputationGainedPerTurnin": [
+            20,
+            24,
+            29,
+            35,
+            42,
+            50,
+        ]
+    },
+    {
+        "tribe_type": "hw",
+        "reputationNeeded": [
+            150,
+            360,
+            510,
+            720,
+            990,
+            1320,
+            1730,
+        ],
+        "reputationGainedPerTurnin": [
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+        ]
+    },
+        {
+        "tribe_type": "hw_vath",
+        "reputationNeeded": [
+            510,
+            720,
+            990,
+            1320,
+            1730,
+        ],
+        "reputationGainedPerTurnin": [
+            70,
+            70,
+            70,
+            70,
+            70,
+        ]
+    },
+    {
+        "tribe_type": "sb",
+        "reputationNeeded": [
+            510,
+            720,
+            990,
+            1320,
+            1730,
+        ],
+        "reputationGainedPerTurnin": [
+            60,
+            60,
+            60,
+            60,
+            60,
+        ]
+    },
+      {
+        "tribe_type": "shb",
+        "reputationNeeded": [
+            510,
+            720,
+            990,
+            1320,
+            1730,
+        ],
+        "reputationGainedPerTurnin": [
+            60,
+            60,
+            60,
+            60,
+            60,
+        ]
+    },
+        {
+        "tribe_type": "ew",
+        "reputationNeeded": [
+            510,
+            720,
+            990,
+            1320,
+            1730,
+        ],
+        "reputationGainedPerTurnin": [
+            60,
+            60,
+            60,
+            60,
+            60,
+        ]
+    },
+          {
+        "tribe_type": "dt",
+        "reputationNeeded": [
+            510,
+            720,
+            990,
+            1320,
+            1730,
+        ],
+        "reputationGainedPerTurnin": [
+            60,
+            60,
+            60,
+            60,
+            60,
+        ]
+    }
+  ];
 
-       <div class="tribe" id="amaljaa">
-<div class="tribe_header">
-  <input type="checkbox" id="Count_amaljaa" name="Count_tribe" value="true">
-     <h2>Amal'jaa</h2>
-     <img src="https://gdm-catalog-fmapi-prod.imgix.net/ProductLogo/f0986dce-1396-4b7d-9975-0a75e36e1afe.png" class="tribe_icon">
-</div>
+// Now, let's create a list of tribes, with an easy to access reference to their reputation data based on their tribe type.
+const TRIBE_DATA = [
+    {
+        "name": "Amal'jaa",
+        "id": "amaljaa",
+        "reputationData": TRIBE_REPUTATION_DATA.find(tribe => tribe.tribe_type === "arr"),
+        "daysNeededToMax": 23
+    },
+    {
+        "name": "Kobold",
+        "id": "kobold",
+        "reputationData": TRIBE_REPUTATION_DATA.find(tribe => tribe.tribe_type === "arr"),
+        "daysNeededToMax": 23
+    },
+    {
+        "name": "Sahagin",
+        "id": "sahagin",
+        "reputationData": TRIBE_REPUTATION_DATA.find(tribe => tribe.tribe_type === "arr"),
+        "daysNeededToMax": 23
+    },
+    {
+        "name": "Sylph",
+        "id": "sylph",
+        "reputationData": TRIBE_REPUTATION_DATA.find(tribe => tribe.tribe_type === "arr"),
+        "daysNeededToMax": 23
+    },
+    {
+        "name": "Ixal",
+        "id": "ixal",
+        "reputationData": TRIBE_REPUTATION_DATA.find(tribe => tribe.tribe_type === "arr_ixal"),
+        "daysNeededToMax": 38
+    },
+    {
+        "name": "VanuVanu",
+        "id": "vanuvanu",
+        "reputationData": TRIBE_REPUTATION_DATA.find(tribe => tribe.tribe_type === "hw"),
+        "daysNeededToMax": 41
+    },
+    {
+        "name": "Moogle",
+        "id": "moogle",
+        "reputationData": TRIBE_REPUTATION_DATA.find(tribe => tribe.tribe_type === "hw"),
+        "daysNeededToMax": 41
+    },
+    {
+        "name": "Namazu",
+        "id": "namazu",
+        "reputationData": TRIBE_REPUTATION_DATA.find(tribe => tribe.tribe_type === "sb"),
+        "daysNeededToMax": 31
+    },
+    {
+        "name": "Anata",
+        "id": "anata",
+        "reputationData": TRIBE_REPUTATION_DATA.find(tribe => tribe.tribe_type === "sb"),
+        "daysNeededToMax": 31
+    },
+    {
+        "name": "Kojin",
+        "id": "kojin",
+        "reputationData": TRIBE_REPUTATION_DATA.find(tribe => tribe.tribe_type === "sb"),
+        "daysNeededToMax": 31
+    },
+    {
+        "name": "Vath",
+        "id": "vath",
+        "reputationData": TRIBE_REPUTATION_DATA.find(tribe => tribe.tribe_type === "hw_vath"),
+        "daysNeededToMax": 28
+    },
+    {
+        "name": "Qitari",
+        "id": "qitari",
+        "reputationData": TRIBE_REPUTATION_DATA.find(tribe => tribe.tribe_type === "shb"),
+        "daysNeededToMax": 31
+    },
+    {
+        "name": "Pixie",
+        "id": "pixie",
+        "reputationData": TRIBE_REPUTATION_DATA.find(tribe => tribe.tribe_type === "shb"),
+        "daysNeededToMax": 31
+    },
+    {
+        "name": "Dwarf",
+        "id": "dwarf",
+        "reputationData": TRIBE_REPUTATION_DATA.find(tribe => tribe.tribe_type === "shb"),
+        "daysNeededToMax": 31
+    },
+    {
+        "name": "Arkasodara",
+        "id": "arkasodara",
+        "reputationData": TRIBE_REPUTATION_DATA.find(tribe => tribe.tribe_type === "ew"),
+        "daysNeededToMax": 31
+    },
+    {
+        "name": "Omicron",
+        "id": "omicron",
+        "reputationData": TRIBE_REPUTATION_DATA.find(tribe => tribe.tribe_type === "ew"),
+        "daysNeededToMax": 31
+    },
+    {
+        "name": "Loporabit",
+        "id": "loporabit",
+        "reputationData": TRIBE_REPUTATION_DATA.find(tribe => tribe.tribe_type === "ew"),
+        "daysNeededToMax": 31
+    }, 
+    {
+        "name": "PeluPelu",
+        "id": "pelupelu",
+        "reputationData": TRIBE_REPUTATION_DATA.find(tribe => tribe.tribe_type === "dt"),
+        "daysNeededToMax": 31
+    },
+    {
+        "name": "Mamool Ja",
+        "id": "mamoolja",
+        "reputationData": TRIBE_REPUTATION_DATA.find(tribe => tribe.tribe_type === "dt"),
+        "daysNeededToMax": 31
+    },
+    {
+        "name": "Yok Huy",
+        "id": "Yok Huy",
+        "reputationData": TRIBE_REPUTATION_DATA.find(tribe => tribe.tribe_type === "dt"),
+        "daysNeededToMax": 31
+    } 
+]
 
-     <h3>Current Rank:</h3>
-       <select class="input rank" id="amaljaa_rank">
-        <option value="1">1. Neutral</option>
-        <option value="2">2. Recognized</option>
-        <option value="3">3. Friendly</option>
-        <option value="4">4. Trusted</option>
-      </select>
-     <h3>Current Rep:</h3>
-      <input class="input current_rep"  type="number" name="current_rep" id="amaljaa_current_rep">
-      <h3>Results:</h3>
-      <table>
-        <thead>
-        <tr>
-          <th> </th>
-          <th>To next Rank:</th>
-          <th>To Max:</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <th>Rep:</th>
-           <td> <output id="amaljaa_reputation_to_next_Rank"  ></output></td>
-           <td> <output id="amaljaa_reputation_to_max"></output></td>
-        </tr>
-        <tr>
-          <th>Quests:</th>
-           <td> <output id="amaljaa_quests_to_next_Rank" ></output></td>
-           <td> <output id="amaljaa_quests_to_max"></output></td>
-        </tr>
-        <tr>
-          <th>Days:</th>
-           <td> <output id="amaljaa_days_to_next_Rank" ></output></td>
-           <td> <output id="amaljaa_days_to_max"></output></td>
-        </tr>
-        </tbody>
-      </table>   
-   </div>
-       <div class="tribe" id="kobold">
-<div class="tribe_header">
-    <input type="checkbox" id="Count_kobold" name="Count_tribe" value="true">
-     <h2>Kobold</h2>
-     <img src="https://gdm-catalog-fmapi-prod.imgix.net/ProductLogo/f0986dce-1396-4b7d-9975-0a75e36e1afe.png" class="tribe_icon">
-</div>
-     <h3>Current Rank:</h3>
-       <select class="input rank" id="kobold_rank">
-        <option value="1">1. Neutral</option>
-        <option value="2">2. Recognized</option>
-        <option value="3">3. Friendly</option>
-        <option value="4">4. Trusted</option>
-      </select>
-     <h3>Current Rep:</h3>
-      <input class="input current_rep" type="number" name="current_rep" id="kobold_current_rep">
-      <h3>Results:</h3>
-      <table>
-        <thead>
-        <tr>
-          <th> </th>
-          <th>To next Rank:</th>
-          <th>To Max:</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <th>Rep:</th>
-           <td> <output id="kobold_reputation_to_next_Rank" ></output></td>
-           <td> <output id="kobold_reputation_to_max"></output></td>
-        </tr>
-        <tr>
-          <th>Quests:</th>
-           <td> <output id="kobold_quests_to_next_Rank" ></output></td>
-           <td> <output id="kobold_quests_to_max"></output></td>
-        </tr>
-        <tr>
-          <th>Days:</th>
-           <td> <output id="kobold_days_to_next_Rank" ></output></td>
-           <td> <output id="kobold_days_to_max"></output></td>
-        </tr>
-        </tbody>
-      </table>   
-   </div>
-       <div class="tribe" id="sahagin">
-<div class="tribe_header">
-    <input type="checkbox" id="Count_sahagin" name="Count_tribe" value="true">
-     <h2>Sahagin</h2>
-     <img src="https://gdm-catalog-fmapi-prod.imgix.net/ProductLogo/f0986dce-1396-4b7d-9975-0a75e36e1afe.png" class="tribe_icon">
-</div>
-     <h3>Current Rank:</h3>
-       <select class="input rank" id="sahagin_rank">
-        <option value="1">1. Neutral</option>
-        <option value="2">2. Recognized</option>
-        <option value="3">3. Friendly</option>
-        <option value="4">4. Trusted</option>
-      </select>
-     <h3>Current Rep:</h3>
-      <input class="input current_rep" type="number" name="current_rep" id="sahagin_current_rep">
-      <h3>Results:</h3>
-      <table>
-        <thead>
-        <tr>
-          <th> </th>
-          <th>To next Rank:</th>
-          <th>To Max:</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <th>Rep:</th>
-           <td> <output id="sahagin_reputation_to_next_Rank" ></output></td>
-           <td> <output id="sahagin_reputation_to_max"></output></td>
-        </tr>
-        <tr>
-          <th>Quests:</th>
-           <td> <output id="sahagin_quests_to_next_Rank" ></output></td>
-           <td> <output id="sahagin_quests_to_max"></output></td>
-        </tr>
-        <tr>
-          <th>Days:</th>
-           <td> <output id="sahagin_days_to_next_Rank" ></output></td>
-           <td> <output id="sahagin_days_to_max"></output></td>
-        </tr>
-        </tbody>
-      </table>   
-   </div>
-       <div class="tribe" id="sylph">
-<div class="tribe_header">
-    <input type="checkbox" id="Count_sylph" name="Count_tribe" value="true">
-     <h2>Sylph</h2>
-     <img src="https://gdm-catalog-fmapi-prod.imgix.net/ProductLogo/f0986dce-1396-4b7d-9975-0a75e36e1afe.png" class="tribe_icon">
-</div>
-     <h3>Current Rank:</h3>
-       <select class="input rank" id="sylph_rank">
-        <option value="1">1. Neutral</option>
-        <option value="2">2. Recognized</option>
-        <option value="3">3. Friendly</option>
-        <option value="4">4. Trusted</option>
-      </select>
-     <h3>Current Rep:</h3>
-      <input class="input current_rep" type="number" name="current_rep" id="sylph_current_rep">
-      <h3>Results:</h3>
-      <table>
-        <thead>
-        <tr>
-          <th> </th>
-          <th>To next Rank:</th>
-          <th>To Max:</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <th>Rep:</th>
-           <td> <output id="sylph_reputation_to_next_Rank" ></output></td>
-           <td> <output id="sylph_reputation_to_max"></output></td>
-        </tr>
-        <tr>
-          <th>Quests:</th>
-           <td> <output id="sylph_quests_to_next_Rank" ></output></td>
-           <td> <output id="sylph_quests_to_max"></output></td>
-        </tr>
-        <tr>
-          <th>Days:</th>
-           <td> <output id="sylph_days_to_next_Rank" ></output></td>
-           <td> <output id="sylph_days_to_max"></output></td>
-        </tr>
-        </tbody>
-      </table>   
-   </div>
-       <div class="tribe" id="ixal">
-<div class="tribe_header">
-    <input type="checkbox" id="Count_ixal" name="Count_tribe" value="true">
-     <h2>Ixal</h2>
-     <img src="https://gdm-catalog-fmapi-prod.imgix.net/ProductLogo/f0986dce-1396-4b7d-9975-0a75e36e1afe.png" class="tribe_icon">
-</div>
-     <h3>Current Rank:</h3>
-       <select class="input rank" id="ixal_rank">
-        <option value="1">1. Neutral</option>
-        <option value="2">2. Recognized</option>
-        <option value="3">3. Friendly</option>
-        <option value="4">4. Trusted</option>
-        <option value="5">5. Respected</option>
-       <option value="6">6. Honored</option>
-        <option value="7">7. Sworn</option>
-      </select>
-     <h3>Current Rep:</h3>
-      <input class="input current_rep" type="number" name="current_rep" id="ixal_current_rep">
-      <h3>Results:</h3>
-      <table>
-        <thead>
-        <tr>
-          <th> </th>
-          <th>To next Rank:</th>
-          <th>To Max:</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <th>Rep:</th>
-           <td> <output id="ixal_reputation_to_next_Rank" ></output></td>
-           <td> <output id="ixal_reputation_to_max"></output></td>
-        </tr>
-        <tr>
-          <th>Quests:</th>
-           <td> <output id="ixal_quests_to_next_Rank" ></output></td>
-           <td> <output id="ixal_quests_to_max"></output></td>
-        </tr>
-        <tr>
-          <th>Days:</th>
-           <td> <output id="ixal_days_to_next_Rank" ></output></td>
-           <td> <output id="ixal_days_to_max"></output></td>
-        </tr>
-        </tbody>
-      </table>   
-   </div>
-  </div>
-  <div class="expansion" id="HW">
-    <h1>Heavensward Tribes</h1>
+function loadInputData() {
+  if(localStorage.getItem("AlliedSocietyFFXIV") === null) {
+    tribeState = {}
+  } else {
+    tribeState = JSON.parse(localStorage["AlliedSocietyFFXIV"]);
+  }
+  for (var tribe of Object.keys(tribeState)) {
+    
+    var tribeRankId = tribe + "_rank";
+    var tribeRepId = tribe + "_current_rep";
+    document.getElementById(tribeRankId).value = tribeState[tribe]["rank"];
+    document.getElementById(tribeRepId).value = tribeState[tribe]["rep"];
+  }
+}
 
-       <div class="tribe" id="moogle">
-<div class="tribe_header">
-    <input type="checkbox" id="Count_moogle" name="Count_tribe" value="true">
-     <h2>Moogle</h2>
-     <img src="https://gdm-catalog-fmapi-prod.imgix.net/ProductLogo/f0986dce-1396-4b7d-9975-0a75e36e1afe.png" class="tribe_icon">
-</div>
-     <h3>Current Rank:</h3>
-       <select class="input rank" id="moogle_rank">
-        <option value="1">1. Neutral</option>
-        <option value="2">2. Recognized</option>
-        <option value="3">3. Friendly</option>
-        <option value="4">4. Trusted</option>
-        <option value="5">5. Respected</option>
-       <option value="6">6. Honored</option>
-        <option value="7">7. Sworn</option>
-        <option value="8">8. Bloodsworn</option>
-      </select>
-     <h3>Current Rep:</h3>
-      <input class="input current_rep" type="number" name="current_rep" id="moogle_current_rep">
-      <h3>Results:</h3>
-      <table>
-        <thead>
-        <tr>
-          <th> </th>
-          <th>To next Rank:</th>
-          <th>To Max:</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <th>Rep:</th>
-           <td> <output id="moogle_reputation_to_next_Rank" ></output></td>
-           <td> <output id="moogle_reputation_to_max"></output></td>
-        </tr>
-        <tr>
-          <th>Quests:</th>
-           <td> <output id="moogle_quests_to_next_Rank" ></output></td>
-           <td> <output id="moogle_quests_to_max"></output></td>
-        </tr>
-        <tr>
-          <th>Days:</th>
-           <td> <output id="moogle_days_to_next_Rank" ></output></td>
-           <td> <output id="moogle_days_to_max"></output></td>
-        </tr>
-        </tbody>
-      </table>   
-   </div>
-       <div class="tribe" id="vath">
-<div class="tribe_header">
-    <input type="checkbox" id="Count_vath" name="Count_tribe" value="true">
-     <h2>Vath</h2>
-     <img src="https://gdm-catalog-fmapi-prod.imgix.net/ProductLogo/f0986dce-1396-4b7d-9975-0a75e36e1afe.png" class="tribe_icon">
-</div>
-     <h3>Current Rank:</h3>
-       <select class="input rank" id="vath_rank">
-        <option value="3">3. Friendly</option>
-        <option value="4">4. Trusted</option>
-        <option value="5">5. Respected</option>
-       <option value="6">6. Honored</option>
-        <option value="7">7. Sworn</option>
-        <option value="8">8. Bloodsworn</option>
-      </select>
-     <h3>Current Rep:</h3>
-      <input class="input current_rep" type="number" name="current_rep" id="vath_current_rep">
-      <h3>Results:</h3>
-      <table>
-        <thead>
-        <tr>
-          <th> </th>
-          <th>To next Rank:</th>
-          <th>To Max:</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <th>Rep:</th>
-           <td> <output id="vath_reputation_to_next_Rank" ></output></td>
-           <td> <output id="vath_reputation_to_max"></output></td>
-        </tr>
-        <tr>
-          <th>Quests:</th>
-           <td> <output id="vath_quests_to_next_Rank" ></output></td>
-           <td> <output id="vath_quests_to_max"></output></td>
-        </tr>
-        <tr>
-          <th>Days:</th>
-           <td> <output id="vath_days_to_next_Rank" ></output></td>
-           <td> <output id="vath_days_to_max"></output></td>
-        </tr>
-        </tbody>
-      </table>   
-   </div>
-       <div class="tribe" id="vanuvanu">
-<div class="tribe_header">
-    <input type="checkbox" id="Count_vanuvanu" name="Count_tribe" value="true">
-     <h2>Vanu Vanu</h2>
-     <img src="https://gdm-catalog-fmapi-prod.imgix.net/ProductLogo/f0986dce-1396-4b7d-9975-0a75e36e1afe.png" class="tribe_icon">
-</div>
-     <h3>Current Rank:</h3>
-       <select class="input rank" id="vanuvanu_rank">
-        <option value="1">1. Neutral</option>
-        <option value="2">2. Recognized</option>
-        <option value="3">3. Friendly</option>
-        <option value="4">4. Trusted</option>
-        <option value="5">5. Respected</option>
-       <option value="6">6. Honored</option>
-        <option value="7">7. Sworn</option>
-        <option value="8">8. Bloodsworn</option>
-      </select>
-     <h3>Current Rep:</h3>
-      <input class="input current_rep" type="number" name="current_rep" id="vanuvanu_current_rep">
-      <h3>Results:</h3>
-      <table>
-        <thead>
-        <tr>
-          <th> </th>
-          <th>To next Rank:</th>
-          <th>To Max:</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <th>Rep:</th>
-           <td> <output id="vanuvanu_reputation_to_next_Rank" ></output></td>
-           <td> <output id="vanuvanu_reputation_to_max"></output></td>
-        </tr>
-        <tr>
-          <th>Quests:</th>
-           <td> <output id="vanuvanu_quests_to_next_Rank" ></output></td>
-           <td> <output id="vanuvanu_quests_to_max"></output></td>
-        </tr>
-        <tr>
-          <th>Days:</th>
-           <td> <output id="vanuvanu_days_to_next_Rank" ></output></td>
-           <td> <output id="vanuvanu_days_to_max"></output></td>
-        </tr>
-        </tbody>
-      </table>   
-   </div>
-  </div>
-    <div class="expansion" id="SB">
-    <h1>Stormblood Tribes</h1>
+function saveInputData() {
+  var allTribes = document.getElementsByClassName(classNames="tribe");
 
-       <div class="tribe" id="anata">
-<div class="tribe_header">
-    <input type="checkbox" id="Count_anata" name="Count_tribe" value="true">
-     <h2>Anata</h2>
-     <img src="https://gdm-catalog-fmapi-prod.imgix.net/ProductLogo/f0986dce-1396-4b7d-9975-0a75e36e1afe.png" class="tribe_icon">
-</div>
-     <h3>Current Rank:</h3>
-       <select class="input rank" id="anata_rank">
-        <option value="3">3. Friendly</option>
-        <option value="4">4. Trusted</option>
-        <option value="5">5. Respected</option>
-       <option value="6">6. Honored</option>
-        <option value="7">7. Sworn</option>
-        <option value="8">8. Bloodsworn</option>
-      </select>
-     <h3>Current Rep:</h3>
-      <input class="input current_rep" type="number" name="current_rep" id="anata_current_rep">
-      <h3>Results:</h3>
-      <table>
-        <thead>
-        <tr>
-          <th> </th>
-          <th>To next Rank:</th>
-          <th>To Max:</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <th>Rep:</th>
-           <td> <output id="anata_reputation_to_next_Rank" ></output></td>
-           <td> <output id="anata_reputation_to_max"></output></td>
-        </tr>
-        <tr>
-          <th>Quests:</th>
-           <td> <output id="anata_quests_to_next_Rank" ></output></td>
-           <td> <output id="anata_quests_to_max"></output></td>
-        </tr>
-        <tr>
-          <th>Days:</th>
-           <td> <output id="anata_days_to_next_Rank" ></output></td>
-           <td> <output id="anata_days_to_max"></output></td>
-        </tr>
-        </tbody>
-      </table>   
-   </div>
-       <div class="tribe" id="kojin">
-<div class="tribe_header">
-    <input type="checkbox" id="Count_kojin" name="Count_tribe" value="true">
-     <h2>Kojin</h2>
-     <img src="https://gdm-catalog-fmapi-prod.imgix.net/ProductLogo/f0986dce-1396-4b7d-9975-0a75e36e1afe.png" class="tribe_icon">
-</div>
-     <h3>Current Rank:</h3>
-       <select class="input rank" id="kojin_rank">
-        <option value="3">3. Friendly</option>
-        <option value="4">4. Trusted</option>
-        <option value="5">5. Respected</option>
-       <option value="6">6. Honored</option>
-        <option value="7">7. Sworn</option>
-        <option value="8">8. Bloodsworn</option>
-      </select>
-     <h3>Current Rep:</h3>
-      <input class="input current_rep" type="number" name="current_rep" id="kojin_current_rep">
-      <h3>Results:</h3>
-      <table>
-        <thead>
-        <tr>
-          <th> </th>
-          <th>To next Rank:</th>
-          <th>To Max:</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <th>Rep:</th>
-           <td> <output id="kojin_reputation_to_next_Rank" ></output></td>
-           <td> <output id="kojin_reputation_to_max"></output></td>
-        </tr>
-        <tr>
-          <th>Quests:</th>
-           <td> <output id="kojin_quests_to_next_Rank" ></output></td>
-           <td> <output id="kojin_quests_to_max"></output></td>
-        </tr>
-        <tr>
-          <th>Days:</th>
-           <td> <output id="kojin_days_to_next_Rank" ></output></td>
-           <td> <output id="kojin_days_to_max"></output></td>
-        </tr>
-        </tbody>
-      </table>   
-   </div>
-       <div class="tribe" id="namazu">
-<div class="tribe_header">
-    <input type="checkbox" id="Count_namazu" name="Count_tribe" value="true">
-     <h2>Namazu</h2>
-     <img src="https://gdm-catalog-fmapi-prod.imgix.net/ProductLogo/f0986dce-1396-4b7d-9975-0a75e36e1afe.png" class="tribe_icon">
-</div>
-     <h3>Current Rank:</h3>
-       <select class="input rank" id="namazu_rank">
-        <option value="3">3. Friendly</option>
-        <option value="4">4. Trusted</option>
-        <option value="5">5. Respected</option>
-       <option value="6">6. Honored</option>
-        <option value="7">7. Sworn</option>
-        <option value="8">8. Bloodsworn</option>
-      </select>
-     <h3>Current Rep:</h3>
-      <input class="input current_rep" type="number" name="current_rep" id="namazu_current_rep">
-      <h3>Results:</h3>
-      <table>
-        <thead>
-        <tr>
-          <th> </th>
-          <th>To next Rank:</th>
-          <th>To Max:</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <th>Rep:</th>
-           <td> <output id="namazu_reputation_to_next_Rank" ></output></td>
-           <td> <output id="namazu_reputation_to_max"></output></td>
-        </tr>
-        <tr>
-          <th>Quests:</th>
-           <td> <output id="namazu_quests_to_next_Rank" ></output></td>
-           <td> <output id="namazu_quests_to_max"></output></td>
-        </tr>
-        <tr>
-          <th>Days:</th>
-           <td> <output id="namazu_days_to_next_Rank" ></output></td>
-           <td> <output id="namazu_days_to_max"></output></td>
-        </tr>
-        </tbody>
-      </table>   
-   </div>
-  </div>
-      <div class="expansion" id="SHB">
-    <h1>Shadowbringers Tribes</h1>
+  var tribeState = {};
 
-       <div class="tribe" id="pixie">
-<div class="tribe_header">
-    <input type="checkbox" id="Count_pixie" name="Count_tribe" value="true">
-     <h2>Pixie</h2>
-     <img src="https://gdm-catalog-fmapi-prod.imgix.net/ProductLogo/f0986dce-1396-4b7d-9975-0a75e36e1afe.png" class="tribe_icon">
-</div>
-     <h3>Current Rank:</h3>
-       <select class="input rank" id="pixie_rank">
-        <option value="3">3. Friendly</option>
-        <option value="4">4. Trusted</option>
-        <option value="5">5. Respected</option>
-       <option value="6">6. Honored</option>
-        <option value="7">7. Sworn</option>
-        <option value="8">8. Bloodsworn</option>
-      </select>
-     <h3>Current Rep:</h3>
-      <input class="input current_rep" type="number" name="current_rep" id="pixie_current_rep">
-      <h3>Results:</h3>
-      <table>
-        <thead>
-        <tr>
-          <th> </th>
-          <th>To next Rank:</th>
-          <th>To Max:</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <th>Rep:</th>
-           <td> <output id="pixie_reputation_to_next_Rank" ></output></td>
-           <td> <output id="pixie_reputation_to_max"></output></td>
-        </tr>
-        <tr>
-          <th>Quests:</th>
-           <td> <output id="pixie_quests_to_next_Rank" ></output></td>
-           <td> <output id="pixie_quests_to_max"></output></td>
-        </tr>
-        <tr>
-          <th>Days:</th>
-           <td> <output id="pixie_days_to_next_Rank" ></output></td>
-           <td> <output id="pixie_days_to_max"></output></td>
-        </tr>
-        </tbody>
-      </table>   
-   </div>
-       <div class="tribe" id="qitari">
-<div class="tribe_header">
-    <input type="checkbox" id="Count_qitari" name="Count_tribe" value="true">
-     <h2>Qitari</h2>
-     <img src="https://gdm-catalog-fmapi-prod.imgix.net/ProductLogo/f0986dce-1396-4b7d-9975-0a75e36e1afe.png" class="tribe_icon">
-</div>
-     <h3>Current Rank:</h3>
-       <select class="input rank" id="qitari_rank">
-        <option value="3">3. Friendly</option>
-        <option value="4">4. Trusted</option>
-        <option value="5">5. Respected</option>
-       <option value="6">6. Honored</option>
-        <option value="7">7. Sworn</option>
-        <option value="8">8. Bloodsworn</option>
-      </select>
-     <h3>Current Rep:</h3>
-      <input class="input current_rep" type="number" name="current_rep" id="qitari_current_rep">
-      <h3>Results:</h3>
-      <table>
-        <thead>
-        <tr>
-          <th> </th>
-          <th>To next Rank:</th>
-          <th>To Max:</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <th>Rep:</th>
-           <td> <output id="qitari_reputation_to_next_Rank" ></output></td>
-           <td> <output id="qitari_reputation_to_max"></output></td>
-        </tr>
-        <tr>
-          <th>Quests:</th>
-           <td> <output id="qitari_quests_to_next_Rank" ></output></td>
-           <td> <output id="qitari_quests_to_max"></output></td>
-        </tr>
-        <tr>
-          <th>Days:</th>
-           <td> <output id="qitari_days_to_next_Rank" ></output></td>
-           <td> <output id="qitari_days_to_max"></output></td>
-        </tr>
-        </tbody>
-      </table>   
-   </div>
-       <div class="tribe" id="dwarf">
-<div class="tribe_header">  <input type="checkbox" id="Count_dwarf" name="Count_tribe" value="true">
-     <h2>Dwarf</h2>
-     <img src="https://gdm-catalog-fmapi-prod.imgix.net/ProductLogo/f0986dce-1396-4b7d-9975-0a75e36e1afe.png" class="tribe_icon">
-</div>
-     <h3>Current Rank:</h3>
-       <select class="input rank" id="dwarf_rank">
-        <option value="3">3. Friendly</option>
-        <option value="4">4. Trusted</option>
-        <option value="5">5. Respected</option>
-       <option value="6">6. Honored</option>
-        <option value="7">7. Sworn</option>
-        <option value="8">8. Bloodsworn</option>
-      </select>
-     <h3>Current Rep:</h3>
-      <input class="input current_rep" type="number" name="current_rep" id="dwarf_current_rep">
-      <h3>Results:</h3>
-      <table>
-        <thead>
-        <tr>
-          <th> </th>
-          <th>To next Rank:</th>
-          <th>To Max:</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <th>Rep:</th>
-           <td> <output id="dwarf_reputation_to_next_Rank" ></output></td>
-           <td> <output id="dwarf_reputation_to_max"></output></td>
-        </tr>
-        <tr>
-          <th>Quests:</th>
-           <td> <output id="dwarf_quests_to_next_Rank" ></output></td>
-           <td> <output id="dwarf_quests_to_max"></output></td>
-        </tr>
-        <tr>
-          <th>Days:</th>
-           <td> <output id="dwarf_days_to_next_Rank" ></output></td>
-           <td> <output id="dwarf_days_to_max"></output></td>
-        </tr>
-        </tbody>
-      </table>   
-   </div>
-  </div>
-        <div class="expansion" id="EW">
-    <h1>Endwalker Tribes</h1>
+  for (var tribeElement of allTribes) {
+    var tribe = tribeElement.id;
+    var tribeRankId = tribe + "_rank";
+    var tribeRepId = tribe + "_current_rep";
 
-       <div class="tribe" id="arkasodara">
-<div class="tribe_header">
-    <input type="checkbox" id="Count_arkasadora" name="Count_tribe" value="true">
-     <h2>Arkasodara</h2>
-     <img src="https://gdm-catalog-fmapi-prod.imgix.net/ProductLogo/f0986dce-1396-4b7d-9975-0a75e36e1afe.png" class="tribe_icon">
-</div>
-     <h3>Current Rank:</h3>
-       <select class="input rank" id="arkasodara_rank">
-        <option value="3">3. Friendly</option>
-        <option value="4">4. Trusted</option>
-        <option value="5">5. Respected</option>
-       <option value="6">6. Honored</option>
-        <option value="7">7. Sworn</option>
-        <option value="8">8. Bloodsworn</option>
-      </select>
-     <h3>Current Rep:</h3>
-      <input class="input current_rep" type="number" name="current_rep" id="arkasodara_current_rep">
-      <h3>Results:</h3>
-      <table>
-        <thead>
-        <tr>
-          <th> </th>
-          <th>To next Rank:</th>
-          <th>To Max:</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <th>Rep:</th>
-           <td> <output id="arkasodara_reputation_to_next_Rank" ></output></td>
-           <td> <output id="arkasodara_reputation_to_max"></output></td>
-        </tr>
-        <tr>
-          <th>Quests:</th>
-           <td> <output id="arkasodara_quests_to_next_Rank" ></output></td>
-           <td> <output id="arkasodara_quests_to_max"></output></td>
-        </tr>
-        <tr>
-          <th>Days:</th>
-           <td> <output id="arkasodara_days_to_next_Rank" ></output></td>
-           <td> <output id="arkasodara_days_to_max"></output></td>
-        </tr>
-        </tbody>
-      </table>   
-   </div>
-       <div class="tribe" id="omicron">
-<div class="tribe_header">
-    <input type="checkbox" id="Count_omicron" name="Count_tribe" value="true">
-     <h2>Omicron</h2>
-     <img src="https://gdm-catalog-fmapi-prod.imgix.net/ProductLogo/f0986dce-1396-4b7d-9975-0a75e36e1afe.png" class="tribe_icon">
-</div>
-     <h3>Current Rank:</h3>
-       <select class="input rank" id="omicron_rank">
-        <option value="3">3. Friendly</option>
-        <option value="4">4. Trusted</option>
-        <option value="5">5. Respected</option>
-       <option value="6">6. Honored</option>
-        <option value="7">7. Sworn</option>
-        <option value="8">8. Bloodsworn</option>
-      </select>
-     <h3>Current Rep:</h3>
-      <input class="input current_rep" type="number" name="current_rep" id="omicron_current_rep">
-      <h3>Results:</h3>
-      <table>
-        <thead>
-        <tr>
-          <th> </th>
-          <th>To next Rank:</th>
-          <th>To Max:</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <th>Rep:</th>
-           <td> <output id="omicron_reputation_to_next_Rank" ></output></td>
-           <td> <output id="omicron_reputation_to_max"></output></td>
-        </tr>
-        <tr>
-          <th>Quests:</th>
-           <td> <output id="omicron_quests_to_next_Rank" ></output></td>
-           <td> <output id="omicron_quests_to_max"></output></td>
-        </tr>
-        <tr>
-          <th>Days:</th>
-           <td> <output id="omicron_days_to_next_Rank" ></output></td>
-           <td> <output id="omicron_days_to_max"></output></td>
-        </tr>
-        </tbody>
-      </table>   
-   </div>
-       <div class="tribe" id="loporabit">
-<div class="tribe_header">
-    <input type="checkbox" id="Count_loporabit" name="Count_tribe" value="true">
-     <h2>Loporabit</h2>
-     <img src="https://gdm-catalog-fmapi-prod.imgix.net/ProductLogo/f0986dce-1396-4b7d-9975-0a75e36e1afe.png" class="tribe_icon">
-</div>
-     <h3>Current Rank:</h3>
-       <select class="input rank" id="loporabit_rank">
-        <option value="3">3. Friendly</option>
-        <option value="4">4. Trusted</option>
-        <option value="5">5. Respected</option>
-       <option value="6">6. Honored</option>
-        <option value="7">7. Sworn</option>
-        <option value="8">8. Bloodsworn</option>
-      </select>
-     <h3>Current Rep:</h3>
-      <input class="input current_rep" type="number" name="current_rep" id="loporabit_current_rep">
-      <h3>Results:</h3>
-      <table>
-        <thead>
-        <tr>
-          <th> </th>
-          <th>To next Rank:</th>
-          <th>To Max:</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <th>Rep:</th>
-           <td> <output id="loporabit_reputation_to_next_Rank" ></output></td>
-           <td> <output id="loporabit_reputation_to_max"></output></td>
-        </tr>
-        <tr>
-          <th>Quests:</th>
-           <td> <output id="loporabit_quests_to_next_Rank" ></output></td>
-           <td> <output id="loporabit_quests_to_max"></output></td>
-        </tr>
-        <tr>
-          <th>Days:</th>
-           <td> <output id="loporabit_days_to_next_Rank" ></output></td>
-           <td> <output id="loporabit_days_to_max"></output></td>
-        </tr>
-        </tbody>
-      </table>   
-   </div>
-  </div>
-  <div class="summary_result" id="summary_result">
-  
-    <h2>Results summary:</h2>
-<p id="total_quests_to_max">a</p>
-<p id="total_days_to_max">b</p>
+    tribeState[tribe] = {
+      "rank": document.getElementById(tribeRankId).value,
+      "rep": document.getElementById(tribeRepId).value,
+    }
+  }
 
-</div>
-  <script src="script.js"></script>
-</body>
-</html>
+  localStorage["AlliedSocietyFFXIV"] = JSON.stringify(tribeState)
+}
+
+
+
+
+window.onload = function() {
+ const AllInputs = document.getElementsByClassName("input"); //collect all inputs
+ console.log()
+ for (let i=0; i< AllInputs.length; i++) { //for the size of all inputs repeat checking if input changes
+  AllInputs[i].addEventListener("change", function() {
+   saveInputData();
+   calculateTribeProgression();
+  });
+ }
+}
+
+     
+// Now, let's create a function that will calculate what we need to max out a tribe.
+
+function calculateTribeProgression() {  
+var allTribes = document.getElementsByClassName(classNames="tribe"); //gwt total list of all tribes
+  for (var tribeElement of allTribes) {
+    //***********GETTING ALL ID AND CONSTANTS***************
+    var tribe = tribeElement.id;
+    var tribeRankId = tribe + "_rank";
+    var tribeRepId = tribe + "_current_rep";
+    const current_rank =  document.getElementById(tribeRankId).value;
+    const current_rep =  document.getElementById(tribeRepId).value;
+ 
+
+    // Find the tribe's data based on the tribe id.
+    // If the tribe id doesn't exist, return null.
+    const tribeData = TRIBE_DATA.find(tribeData => tribeData.id === tribe);
+    // If we couldn't find the tribe, bail out early.
+    if (tribeData === undefined) {
+        throw new Error("Could not find tribe data for tribe with id: " + tribe)
+  }
+  // Rank is 1-indexed, but the array is 0-indexed, so we need to subtract 1 from the rank to get the correct index.
+    const rank_Index = current_rank - 1
+  //getting the to T0 MAX data from our current rep/rank and the tribedata declared
+   //**********TO MAX*************
+    var questsToMax = 0 
+    for (let index = 0; index < tribeData.reputationData.reputationNeeded.length; index++) {
+        questsToMax += Math.ceil(tribeData.reputationData.reputationNeeded[index] / tribeData.reputationData.reputationGainedPerTurnin[index]);// round up since we cannot have partial quests
+  } 
+  // ***TOTAL QUESTS NEEDED FROM CURRENT REP***
+    var QuestsToMax= 0
+    var RepToMax= 0
+        for (let index = rank_Index; index < tribeData.reputationData.reputationNeeded.length; index++) {
+        RepToMax += tribeData.reputationData.reputationNeeded[index]  - current_rep;
+        QuestsToMax += Math.ceil(RepToMax / tribeData.reputationData.reputationGainedPerTurnin[index]);
+    }
+    
+  //find the total days needed to max (12 quests per day)
+    var DaysToMax= Math.ceil(QuestsToMax / 12);
+
+//***TO NEXT RANK***    
+        var RepToNext = tribeData.reputationData.reputationNeeded[rank_Index] - current_rep;
+        var QuestsToNext = Math.ceil((tribeData.reputationData.reputationNeeded[rank_Index] - current_rep) / tribeData.reputationData.reputationGainedPerTurnin[rank_Index]);
+        // We divide by 3 because we can only do 3 quests per day.
+        var DaysToNext = Math.ceil((tribeData.reputationData.reputationNeeded[rank_Index] - current_rep) / tribeData.reputationData.reputationGainedPerTurnin[rank_Index] / 3);
+
+ //RETURN TO INPUT FIELD
+    var tribeRepNextId = tribe + "_reputation_to_next_Rank";
+    var tribeRepMaxId = tribe + "_reputation_to_max";
+    var tribeQuestsNextId = tribe + "_quests_to_next_Rank";
+    var tribeQuestsMaxId = tribe + "_quests_to_max";
+    var tribeDaysNextId = tribe + "_days_to_next_Rank";
+    var tribeDaysMaxId = tribe + "_days_to_max";
+    document.getElementById(tribeRepNextId).value = RepToNext;
+    document.getElementById(tribeRepMaxId).value = RepToMax;
+    document.getElementById(tribeQuestsNextId).value = QuestsToNext;
+    document.getElementById(tribeQuestsMaxId).value = QuestsToMax; 
+    document.getElementById(tribeDaysNextId).value = DaysToNext;
+    document.getElementById(tribeDaysMaxId).value = DaysToMax;   
+
+        
+    }
+var AllQuests = document.getElementsByClassName(classNames="QuestsToMax");
+var AllDays = document.getElementsByClassName(classNames="DaysToMax");
+var totalQuests = 0;
+var totalDays = 0;
+    for(var i = 0; i < AllQuests.length; i++)
+    {
+        totalQuests = totalQuests +  parseInt(AllQuests[i].value);
+        totalDays = totalQuests +  parseInt(AllDays[i].value);
+    }
+ document.getElementById("total_quests_to_max").value = totalQuests;
+document.getElementById("total_days_to_max").value = totalDays;    
+   
+}
+// Load input data from localStorage on page load
+loadInputData();
+
+// Call calculatetribeprogression() on the first load
+calculateTribeProgression();
