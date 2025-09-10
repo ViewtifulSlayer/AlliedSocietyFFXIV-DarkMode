@@ -173,14 +173,14 @@ const TRIBE_DATA = [
         "daysNeededToMax": 38
     },
     {
-        "name": "Vanu Vanu",
-        "id": "vanu_vanu",
+        "name": "VanuVanu",
+        "id": "vanuvanu",
         "reputationData": TRIBE_REPUTATION_DATA.find(tribe => tribe.tribe_type === "hw"),
         "daysNeededToMax": 41
     },
     {
-        "name": "Moogles",
-        "id": "moogles",
+        "name": "Moogle",
+        "id": "moogle",
         "reputationData": TRIBE_REPUTATION_DATA.find(tribe => tribe.tribe_type === "hw"),
         "daysNeededToMax": 41
     },
@@ -191,8 +191,8 @@ const TRIBE_DATA = [
         "daysNeededToMax": 31
     },
     {
-        "name": "Ananta",
-        "id": "ananta",
+        "name": "Anata",
+        "id": "anata",
         "reputationData": TRIBE_REPUTATION_DATA.find(tribe => tribe.tribe_type === "sb"),
         "daysNeededToMax": 31
     },
@@ -221,8 +221,8 @@ const TRIBE_DATA = [
         "daysNeededToMax": 31
     },
     {
-        "name": "Dwarves",
-        "id": "dwarves",
+        "name": "Dwarf",
+        "id": "dwarf",
         "reputationData": TRIBE_REPUTATION_DATA.find(tribe => tribe.tribe_type === "shb"),
         "daysNeededToMax": 31
     },
@@ -307,6 +307,7 @@ window.onload = function() {
  for (let i=0; i< AllInputs.length; i++) { //for the size of all inputs repeat checking if input changes
   AllInputs[i].addEventListener("change", function() {
    saveInputData();
+   calculateTribeProgression();
   });
  }
 }
@@ -314,52 +315,66 @@ window.onload = function() {
      
 // Now, let's create a function that will calculate what we need to max out a tribe.
 
-function calculateTribeProgression(tribe) {
- const currentReputation = document.getElementById(`${tribe}_current_rep`);
- const currentRank = document.getElementById(`${tribe}_rank`);
+function calculateTribeProgression() {
+var allTribes = document.getElementsByClassName(classNames="tribe"); //gwt total list of all tribes
+  for (var tribeElement of allTribes) {
+    //***********GETTING ALL ID AND CONSTANTS***************
+    var tribe = tribeElement.id;
+    var tribeRankId = tribe + "_rank";
+    var tribeRepId = tribe + "_current_rep";
+    const current_rank =  document.getElementById(tribeRankId).value;
+    const current_rep =  document.getElementById(tribeRepId).value;
  
+
     // Find the tribe's data based on the tribe id.
     // If the tribe id doesn't exist, return null.
     const tribeData = TRIBE_DATA.find(tribeData => tribeData.id === tribe);
     // If we couldn't find the tribe, bail out early.
     if (tribeData === undefined) {
         throw new Error("Could not find tribe data for tribe with id: " + tribe)
-    }
-
-// Rank is 1-indexed, but the array is 0-indexed, so we need to subtract 1 from the rank to get the correct index.
-    const rankIndex = currentRank - 1;
-
-    
-//***TO MAX***    
-// find the total quests needed for max rank   
+  }
+  // Rank is 1-indexed, but the array is 0-indexed, so we need to subtract 1 from the rank to get the correct index.
+    const rank_Index = current_rank - 1
+  //getting the to T0 MAX data from our current rep/rank and the tribedata declared
+   //**********TO MAX*************
     var questsToMax = 0 
     for (let index = 0; index < tribeData.reputationData.reputationNeeded.length; index++) {
         questsToMax += Math.ceil(tribeData.reputationData.reputationNeeded[index] / tribeData.reputationData.reputationGainedPerTurnin[index]);// round up since we cannot have partial quests
+  } 
+  // ***TOTAL QUESTS NEEDED FROM CURRENT REP***
+    var QuestsToMax= 0
+    var RepToMax= 0
+        for (let index = rank_Index; index < tribeData.reputationData.reputationNeeded.length; index++) {
+        RepToMax += tribeData.reputationData.reputationNeeded[index]  - current_rep;
+        QuestsToMax += Math.ceil(RepToMax / tribeData.reputationData.reputationGainedPerTurnin[index]);
     }
     
-// find the total quests needed for max rank to go (total - current rep)
-    var questsNeededToMax= 0
-    var repNeededToMax= 0
-        for (let index = rankIndex; index < tribeData.reputationData.reputationNeeded.length; index++) {
-        repNeededToMax += tribeData.reputationData.reputationNeeded[index]  - currentReputation;
-        questsNeededToMax += Math.ceil(repNeededToMax / tribeData.reputationData.reputationGainedPerTurnin[index]);
-    }
-    
-//find the total days needed to max (12 quests per day)
-    var daysNeededToMax= Math.ceil(questsNeededToMax / 12)
+  //find the total days needed to max (12 quests per day)
+    var DaysToMax= Math.ceil(QuestsToMax / 12);
 
 //***TO NEXT RANK***    
-    return {
-        "reputationToNextRank": tribeData.reputationData.reputationNeeded[rankIndex] - currentReputation,
-        "questsNeededToNextRank": Math.ceil((tribeData.reputationData.reputationNeeded[rankIndex] - currentReputation) / tribeData.reputationData.reputationGainedPerTurnin[rankIndex]),
+        var RepToNext = tribeData.reputationData.reputationNeeded[rank_Index] - current_rep;
+        var QuestsToNext = Math.ceil((tribeData.reputationData.reputationNeeded[rank_Index] - current_rep) / tribeData.reputationData.reputationGainedPerTurnin[rank_Index]);
         // We divide by 3 because we can only do 3 quests per day.
-        "daysNeededToNextRank": Math.ceil((tribeData.reputationData.reputationNeeded[rankIndex] - currentReputation) / tribeData.reputationData.reputationGainedPerTurnin[rankIndex] / 3),
+        var DaysToNext = Math.ceil((tribeData.reputationData.reputationNeeded[rank_Index] - current_rep) / tribeData.reputationData.reputationGainedPerTurnin[rank_Index] / 3);
+
+ //RETURN TO INPUT FIELD
+    var tribeRepNextId = tribe + "_reputation_to_next_Rank";
+    var tribeRepMaxId = tribe + "_reputation_to_max";
+    var tribeQuestsNextId = tribe + "_quests_to_next_Rank";
+    var tribeQuestsMaxId = tribe + "_quests_to_max";
+    var tribeDaysNextId = tribe + "_days_to_next_Rank";
+    var tribeDaysMaxId = tribe + "_days_to_max";
+    document.getElementById(tribeRepNextId).value = RepToNext;
+    document.getElementById(tribeRepMaxId).value = RepToMax;
+    document.getElementById(tribeQuestsNextId).value = QuestsToNext;
+    document.getElementById(tribeQuestsMaxId).value = QuestsToMax; 
+    document.getElementById(tribeDaysNextId).value = DaysToNext;
+    document.getElementById(tribeDaysMaxId).value = DaysToMax;           
     }
-     // Save input data to localStorage
-    saveInputData();
 }
 // Load input data from localStorage on page load
 loadInputData();
 
 // Call calculatetribeprogression() on the first load
-calculateTribeProgression('amaljaa');
+calculateTribeProgression();
