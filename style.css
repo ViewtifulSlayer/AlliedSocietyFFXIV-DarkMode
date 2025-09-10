@@ -45,7 +45,7 @@ width: 50px;
 }
 
 .summary_result{
-  position: fixed;
+  position: sticky;
   bottom: 0;
   width: 100%;
   display: block;
