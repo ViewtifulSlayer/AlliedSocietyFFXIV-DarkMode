@@ -364,10 +364,10 @@ var allTribes = document.getElementsByClassName(classNames="tribe"); //gwt total
         for (let index = rank_Index; index < tribeData.reputationData.reputationNeeded.length; index++) {
         RepToMax += tribeData.reputationData.reputationNeeded[index]  - current_rep;
     }
-   if RepToNext <0 {
+   if (RepToNext <0) {
     RepToNext = 0;
    }
-   if RepToMax <0 {
+   if (RepToMax <0) {
     RepToMax = 0;
    }
   //****QUEST DATA*************************************************
