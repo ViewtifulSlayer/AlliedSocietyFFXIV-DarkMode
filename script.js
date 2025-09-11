@@ -294,20 +294,34 @@ const TRIBE_DATA = [
 ]
 
 function loadInputData() {
-  if(localStorage.getItem("AlliedSocietyFFXIV") === null) {
-    tribeState = {}
-  } else {
+  if(localStorage["AlliedSocietyFFXIV"]) {
     tribeState = JSON.parse(localStorage["AlliedSocietyFFXIV"]);
-  }
-  for (var tribe of Object.keys(tribeState)) {
-    var tribeSelectId = "Count_" + tribe;
-    var tribeRankId = tribe + "_rank";
-    var tribeRepId = tribe + "_current_rep";
-    document.getElementById(tribeSelectId).checked = tribeState[tribe]["select"];
-    document.getElementById(tribeRankId).value = tribeState[tribe]["rank"];
-    document.getElementById(tribeRepId).value = tribeState[tribe]["rep"];
+    for (var tribe of Object.keys(tribeState)) {
+      var tribeSelectId = "Count_" + tribe;
+      var tribeRankId = tribe + "_rank";
+      var tribeRepId = tribe + "_current_rep";
+      document.getElementById(tribeSelectId).checked = tribeState[tribe]["select"];
+      document.getElementById(tribeRankId).value = tribeState[tribe]["rank"];
+      document.getElementById(tribeRepId).value = tribeState[tribe]["rep"];
+    }
   }
 }
+
+//function loadInputData() {
+ // if(localStorage.getItem("AlliedSocietyFFXIV") === null) {
+ //   tribeState = {}
+ // } else {
+ //   tribeState = JSON.parse(localStorage["AlliedSocietyFFXIV"]);
+//  }
+ // for (var tribe of Object.keys(tribeState)) {
+  //  var tribeSelectId = "Count_" + tribe;
+  //  var tribeRankId = tribe + "_rank";
+   // var tribeRepId = tribe + "_current_rep";
+  //  document.getElementById(tribeSelectId).checked = tribeState[tribe]["select"];
+  //  document.getElementById(tribeRankId).value = tribeState[tribe]["rank"];
+  //  document.getElementById(tribeRepId).value = tribeState[tribe]["rep"];
+ // }
+//}
 
 function saveInputData() {
   var allTribes = document.getElementsByClassName(classNames="tribe");
