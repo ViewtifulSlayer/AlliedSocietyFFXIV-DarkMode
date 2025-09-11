@@ -6,13 +6,21 @@
   <link href="style.css" rel="stylesheet">
 </head>
 <body>
-  <h1>FFXIV Tribe tracker</h1>
+  <div class="topnav">
+  <a class="active" href="#Home">Home</a>
+  <a href="#ARR">ARR</a>
+  <a href="#HW">HW</a>
+  <a href="#STB">STB</a>
+  <a href="#SHB">SHB</a>
+  <a href="#EW">EW</a>
+  <a href="#DT">DT</a>
+</div>
+  <h1 id="Home">FFXIV Tribe tracker</h1>
   <p>This calculator allows you to track how many quests and days you need to max the Allied society ranks.</p>
   <p>For this we assume 3 quests per tribe daily.</p>
-  <p>The total days is a sum of the highest amount of days for every 4 tribes (12 allowances per day, 3 per tribe)</p>
-  <p>TODO: Allow selection of tribes to be included/excluded and tribe icons</p>
+ <p>The total days is a sum of the highest amount of days for every 4 tribes (12 allowances per day, 3 per tribe)</p>
   <!-- Expansion -->
-    <div class ="expansion">
+    <div class ="expansion" id="ARR">
     <h1>ARR Tribes</h1>
 <!--tribe -->
        <div class="tribe" id="amaljaa">
