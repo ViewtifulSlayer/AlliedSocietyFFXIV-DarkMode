@@ -319,7 +319,9 @@ function saveInputData() {
 }
 
 
-
+function compareNumbers(a, b) {
+  return  b - a; //high to low
+}
 
 window.onload = function() {
  const AllInputs = document.getElementsByClassName("input"); //collect all inputs
@@ -400,16 +402,28 @@ var allTribes = document.getElementsByClassName(classNames="tribe"); //gwt total
     }
 var AllQuests = document.getElementsByClassName(classNames="QuestsToMax");
 var AllDays = document.getElementsByClassName(classNames="DaysToMax");
+let SortAllDays = [];
+  for(x=0; x < AllDays.length; x++) {
+    SortAllDays.push(AllDays[x].value);
+        }
+SortAllDays.sort(compareNumbers); // [high to low]          
+SortAllDays = SortAllDays.map(Number);
+console.log(SortAllDays);
+//normal declaration of our vars
 var totalQuests = 0;
 var totalDays = 0;
+
     for(var i = 0; i < AllQuests.length; i++)
     {
         totalQuests = totalQuests +  parseInt(AllQuests[i].value);
-        totalDays = totalQuests +  parseInt(AllDays[i].value);
+    }
+        for(var i = 0; i < AllDays.length; i+=4)
+    {
+        totalDays += SortAllDays[i];
     }
  document.getElementById("total_quests_to_max").value = totalQuests;
-document.getElementById("total_days_to_max").value = Math.ceil(totalQuests / 12);    
-   
+//document.getElementById("total_days_to_max").value = Math.ceil(totalQuests / 12);    
+  document.getElementById("total_days_to_max").value = totalDays;
 }
 // Load input data from localStorage on page load
 loadInputData();
