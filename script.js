@@ -3,139 +3,159 @@ const TRIBE_REPUTATION_DATA = [
  {
         "tribe_type": "arr",
         "reputationNeeded": [
-            150,
-            360,
-            510,
+            150,//1, neutral
+            360,//2, Recognized
+            510,//3, friendly
         ],
         "reputationGainedPerTurnin": [
-            10,
-            14,
-            20,
+            10,//1
+            14,//2
+            20,//3
         ]
     },
     {
         "tribe_type": "arr_ixal",
         "reputationNeeded": [
-            150,
-            360,
-            510,
-            720,
-            990,
-            1320,
+            150,//1, neutral
+            360,//2, Recognized
+            510,//3, friendly
+            720,//4, Trusted
+            990,//5, Respected
+            1320,//6, Honored
         ],
         "reputationGainedPerTurnin": [
-            20,
-            24,
-            29,
-            35,
-            42,
-            50,
+            20,//1
+            24,//2
+            29,//3
+            35,//4
+            42,//5
+            50,//6
         ]
     },
     {
         "tribe_type": "hw",
         "reputationNeeded": [
-            150,
-            360,
-            510,
-            720,
-            990,
-            1320,
-            1730,
+            150,//1, neutral
+            360,//2, Recognized
+            510,//3, friendly
+            720,//4, Trusted
+            990,//5, Respected
+            1320,//6, Honored
+            1730,//7, Sworn
         ],
         "reputationGainedPerTurnin": [
-            50,
-            50,
-            50,
-            50,
-            50,
-            50,
-            50,
+            50,//1
+            50,//2
+            50,//3
+            50,//4
+            50,//5
+            50,//6
+            50,//7
         ]
     },
         {
         "tribe_type": "hw_vath",
         "reputationNeeded": [
-            510,
-            720,
-            990,
-            1320,
-            1730,
+            0,    //skipping rank 1 
+            0,    //skipping rank 2           
+            510,  //3, friendly
+            720,  //4, Trusted
+            990,  //5, Respected
+            1320, //6, Honored
+            1730, //7, Sworn
         ],
         "reputationGainedPerTurnin": [
-            70,
-            70,
-            70,
-            70,
-            70,
+            0,//1
+            0,//2
+            70,//3
+            70,//4
+            70,//5
+            70,//6
+            70,//7
         ]
     },
     {
         "tribe_type": "sb",
         "reputationNeeded": [
-            510,
-            720,
-            990,
-            1320,
-            1730,
+            0,    //skipping rank 1 
+            0,    //skipping rank 2           
+            510,  //3, friendly
+            720,  //4, Trusted
+            990,  //5, Respected
+            1320, //6, Honored
+            1730, //7, Sworn
         ],
         "reputationGainedPerTurnin": [
-            60,
-            60,
-            60,
-            60,
-            60,
+            0,//1
+            0,//2
+            60,//3
+            60,//4
+            60,//5
+            60,//6
+            60,//7
         ]
     },
       {
         "tribe_type": "shb",
         "reputationNeeded": [
-            510,
-            720,
-            990,
-            1320,
-            1730,
+            0,    //skipping rank 1 
+            0,    //skipping rank 2           
+            510,  //3, friendly
+            720,  //4, Trusted
+            990,  //5, Respected
+            1320, //6, Honored
+            1730, //7, Sworn
         ],
         "reputationGainedPerTurnin": [
-            60,
-            60,
-            60,
-            60,
-            60,
+            0,//1
+            0,//2
+            60,//3
+            60,//4
+            60,//5
+            60,//6
+            60,//7
         ]
     },
         {
         "tribe_type": "ew",
         "reputationNeeded": [
-            510,
-            720,
-            990,
-            1320,
-            1730,
+            0,    //skipping rank 1 
+            0,    //skipping rank 2           
+            510,  //3, friendly
+            720,  //4, Trusted
+            990,  //5, Respected
+            1320, //6, Honored
+            1730, //7, Sworn
         ],
         "reputationGainedPerTurnin": [
-            60,
-            60,
-            60,
-            60,
-            60,
+            0,//1
+            0,//2
+            60,//3
+            60,//4
+            60,//5
+            60,//6
+            60,//7
         ]
     },
           {
         "tribe_type": "dt",
         "reputationNeeded": [
-            510,
-            720,
-            990,
-            1320,
-            1730,
+            0,    //skipping rank 1 
+            0,    //skipping rank 2           
+            510,  //3, friendly
+            720,  //4, Trusted
+            990,  //5, Respected
+            1320, //6, Honored
+            1730, //7, Sworn
         ],
         "reputationGainedPerTurnin": [
-            60,
-            60,
-            60,
-            60,
-            60,
+            0,//1
+            0,//2
+            60,//3
+            60,//4
+            60,//5
+            60,//6
+            60,//7
         ]
     }
   ];
@@ -335,28 +355,32 @@ var allTribes = document.getElementsByClassName(classNames="tribe"); //gwt total
   }
   // Rank is 1-indexed, but the array is 0-indexed, so we need to subtract 1 from the rank to get the correct index.
     const rank_Index = current_rank - 1
-  //getting the to T0 MAX data from our current rep/rank and the tribedata declared
-   //**********TO MAX*************
-    var questsToMax = 0 
-    for (let index = 0; index < tribeData.reputationData.reputationNeeded.length; index++) {
-        questsToMax += Math.ceil(tribeData.reputationData.reputationNeeded[index] / tribeData.reputationData.reputationGainedPerTurnin[index]);// round up since we cannot have partial quests
-  } 
-  // ***TOTAL QUESTS NEEDED FROM CURRENT REP***
-    var QuestsToMax= 0
-    var RepToMax= 0
+  //****REPUTATION DATA*************************************************
+  //lets start with rep to next and then rep to max
+    var RepToNext = tribeData.reputationData.reputationNeeded[rank_Index] - current_rep;
+    var RepToMax= 0;
         for (let index = rank_Index; index < tribeData.reputationData.reputationNeeded.length; index++) {
         RepToMax += tribeData.reputationData.reputationNeeded[index]  - current_rep;
-        QuestsToMax += Math.ceil(RepToMax / tribeData.reputationData.reputationGainedPerTurnin[index]);
     }
-    
-  //find the total days needed to max (12 quests per day)
-    var DaysToMax= Math.ceil(QuestsToMax / 12);
-
-//***TO NEXT RANK***    
-        var RepToNext = tribeData.reputationData.reputationNeeded[rank_Index] - current_rep;
-        var QuestsToNext = Math.ceil((tribeData.reputationData.reputationNeeded[rank_Index] - current_rep) / tribeData.reputationData.reputationGainedPerTurnin[rank_Index]);
-        // We divide by 3 because we can only do 3 quests per day.
-        var DaysToNext = Math.ceil((tribeData.reputationData.reputationNeeded[rank_Index] - current_rep) / tribeData.reputationData.reputationGainedPerTurnin[rank_Index] / 3);
+  //****QUEST DATA*************************************************
+  //lets start with quest to next and then quest to max
+    var QuestsToNext = Math.ceil((tribeData.reputationData.reputationNeeded[rank_Index] - current_rep) / tribeData.reputationData.reputationGainedPerTurnin[rank_Index]);
+    //load qyests to next as first tier, if bigger than 0
+    if (QuestsToNext >= 0 ){
+      var QuestsToMax= QuestsToNext;
+    }else{
+      var QuestsToMax= 0;  
+    }
+    //skipping the current rank since we loaded in the quests to next
+    for (let index = (rank_Index + 1); index < tribeData.reputationData.reputationNeeded.length; index++) {
+      //from the starting value, divide repneeded for next rank with rep gained per turnin
+        QuestsToMax += Math.ceil(tribeData.reputationData.reputationNeeded[index] / tribeData.reputationData.reputationGainedPerTurnin[index]);
+    }
+  //****DAYS DATA*************************************************
+  //lets start with days to next and then days to max
+  // We divide by 3 because we can only do 3 quests per day.
+    var DaysToNext = Math.ceil((tribeData.reputationData.reputationNeeded[rank_Index] - current_rep) / tribeData.reputationData.reputationGainedPerTurnin[rank_Index] / 3);
+    var DaysToMax= Math.ceil(QuestsToMax / 3); 
 
  //RETURN TO INPUT FIELD
     var tribeRepNextId = tribe + "_reputation_to_next_Rank";
@@ -384,7 +408,7 @@ var totalDays = 0;
         totalDays = totalQuests +  parseInt(AllDays[i].value);
     }
  document.getElementById("total_quests_to_max").value = totalQuests;
-document.getElementById("total_days_to_max").value = totalDays;    
+document.getElementById("total_days_to_max").value = Math.ceil(totalQuests / 12);    
    
 }
 // Load input data from localStorage on page load
