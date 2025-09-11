@@ -6,6 +6,7 @@ const TRIBE_REPUTATION_DATA = [
             150,//1, neutral
             360,//2, Recognized
             510,//3, friendly
+            0,//no more needed
         ],
         "reputationGainedPerTurnin": [
             10,//1
@@ -22,6 +23,7 @@ const TRIBE_REPUTATION_DATA = [
             720,//4, Trusted
             990,//5, Respected
             1320,//6, Honored
+            0,//no more needed
         ],
         "reputationGainedPerTurnin": [
             20,//1
@@ -30,6 +32,7 @@ const TRIBE_REPUTATION_DATA = [
             35,//4
             42,//5
             50,//6
+
         ]
     },
     {
@@ -42,6 +45,7 @@ const TRIBE_REPUTATION_DATA = [
             990,//5, Respected
             1320,//6, Honored
             1730,//7, Sworn
+            0,//no more needed
         ],
         "reputationGainedPerTurnin": [
             50,//1
@@ -63,6 +67,7 @@ const TRIBE_REPUTATION_DATA = [
             990,  //5, Respected
             1320, //6, Honored
             1730, //7, Sworn
+            0,//no more needed
         ],
         "reputationGainedPerTurnin": [
             0,//1
@@ -84,6 +89,7 @@ const TRIBE_REPUTATION_DATA = [
             990,  //5, Respected
             1320, //6, Honored
             1730, //7, Sworn
+            0,//no more needed
         ],
         "reputationGainedPerTurnin": [
             0,//1
@@ -105,6 +111,7 @@ const TRIBE_REPUTATION_DATA = [
             990,  //5, Respected
             1320, //6, Honored
             1730, //7, Sworn
+            0,//no more needed
         ],
         "reputationGainedPerTurnin": [
             0,//1
@@ -126,6 +133,7 @@ const TRIBE_REPUTATION_DATA = [
             990,  //5, Respected
             1320, //6, Honored
             1730, //7, Sworn
+            0,//no more needed
         ],
         "reputationGainedPerTurnin": [
             0,//1
@@ -147,6 +155,7 @@ const TRIBE_REPUTATION_DATA = [
             990,  //5, Respected
             1320, //6, Honored
             1730, //7, Sworn
+            0,//no more needed
         ],
         "reputationGainedPerTurnin": [
             0,//1
@@ -387,7 +396,7 @@ var allTribes = document.getElementsByClassName(classNames="tribe"); //gwt total
   //lets start with days to next and then days to max
   // We divide by 3 because we can only do 3 quests per day.
     var DaysToNext = Math.ceil((tribeData.reputationData.reputationNeeded[rank_Index] - current_rep) / tribeData.reputationData.reputationGainedPerTurnin[rank_Index] / 3);
-    if (DaysToNext < 0){
+    if (RepToMax <= 0){
       DaysToNext = 0;
     }
     var DaysToMax= Math.ceil(QuestsToMax / 3); 
