@@ -5,7 +5,32 @@ body {
   font-family: sans-serif;
   text-align: center;
 }
+.topnav {
+  position: sticky;
+  top: 0;
+  display: block;
+  overflow: hidden;
+  background-color: #333;
+}
 
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #0c707d;
+  color: white;
+}
 h1, h2 {
   background: #0c707d;
   color: #fff;
