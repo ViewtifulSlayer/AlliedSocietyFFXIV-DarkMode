@@ -300,9 +300,10 @@ function loadInputData() {
     tribeState = JSON.parse(localStorage["AlliedSocietyFFXIV"]);
   }
   for (var tribe of Object.keys(tribeState)) {
-    
+    var tribeSelectId = "Count_" + tribe;
     var tribeRankId = tribe + "_rank";
     var tribeRepId = tribe + "_current_rep";
+    document.getElementById(tribeSelectId).checked = tribeState[tribe]["select"];
     document.getElementById(tribeRankId).value = tribeState[tribe]["rank"];
     document.getElementById(tribeRepId).value = tribeState[tribe]["rep"];
   }
@@ -315,10 +316,12 @@ function saveInputData() {
 
   for (var tribeElement of allTribes) {
     var tribe = tribeElement.id;
+    var tribeSelectId = "Count_" + tribe;
     var tribeRankId = tribe + "_rank";
     var tribeRepId = tribe + "_current_rep";
 
     tribeState[tribe] = {
+      "select": document.getElementById(tribeSelectId).checked,
       "rank": document.getElementById(tribeRankId).value,
       "rep": document.getElementById(tribeRepId).value,
     }
