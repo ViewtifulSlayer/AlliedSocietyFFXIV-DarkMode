@@ -411,12 +411,24 @@ var allTribes = document.getElementsByClassName(classNames="tribe"); //gwt total
     var tribeQuestsMaxId = tribe + "_quests_to_max";
     var tribeDaysNextId = tribe + "_days_to_next_Rank";
     var tribeDaysMaxId = tribe + "_days_to_max";
+  //If select = false, all outputs are 0 
+  var tribeSelectId = "Count_" + tribe;
+  if (document.getElementById(tribeSelectId).checked) {//selected tribe
     document.getElementById(tribeRepNextId).value = RepToNext;
     document.getElementById(tribeRepMaxId).value = RepToMax;
     document.getElementById(tribeQuestsNextId).value = QuestsToNext;
     document.getElementById(tribeQuestsMaxId).value = QuestsToMax; 
     document.getElementById(tribeDaysNextId).value = DaysToNext;
-    document.getElementById(tribeDaysMaxId).value = DaysToMax;   
+    document.getElementById(tribeDaysMaxId).value = DaysToMax;
+  }  else { //not selected tribe
+    document.getElementById(tribeRepNextId).value = 0;
+    document.getElementById(tribeRepMaxId).value = 0;
+    document.getElementById(tribeQuestsNextId).value = 0;
+    document.getElementById(tribeQuestsMaxId).value = 0; 
+    document.getElementById(tribeDaysNextId).value = 0;
+    document.getElementById(tribeDaysMaxId).value = 0;
+  } 
+
 
         
     }
