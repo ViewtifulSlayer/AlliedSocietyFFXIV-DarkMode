@@ -400,26 +400,29 @@ var allTribes = document.getElementsByClassName(classNames="tribe"); //gwt total
 
         
     }
+//**********TOTAL SUM FOR BOTTOM OF SCREEN**************** 
 var AllQuests = document.getElementsByClassName(classNames="QuestsToMax");
 var AllDays = document.getElementsByClassName(classNames="DaysToMax");
-let SortAllDays = [];
-  for(x=0; x < AllDays.length; x++) {
-    SortAllDays.push(AllDays[x].value);
+//Lets pick the highest days to max for every 4 tribes, sorted from high to low 
+let SortAllDays = []; //declare empty array which we will fill with our total days values
+  for(x=0; x < AllDays.length; x++) { 
+    SortAllDays.push(AllDays[x].value); //send all values to this array
         }
-SortAllDays.sort(compareNumbers); // [high to low]          
-SortAllDays = SortAllDays.map(Number);
-console.log(SortAllDays);
-//normal declaration of our vars
+SortAllDays.sort(compareNumbers); // [first we sort numerically, then we sort from high to low using b-a]          
+SortAllDays = SortAllDays.map(Number); //our output is a string array, lets make those numbers again
+//console.log(SortAllDays); //for testing purposes
+ 
+//declaration of our vars that will sum our total
 var totalQuests = 0;
 var totalDays = 0;
 
     for(var i = 0; i < AllQuests.length; i++)
     {
-        totalQuests = totalQuests +  parseInt(AllQuests[i].value);
+        totalQuests = totalQuests +  parseInt(AllQuests[i].value); //take all nummeric values of all quests and add them to each other
     }
-        for(var i = 0; i < AllDays.length; i+=4)
+        for(var i = 0; i < AllDays.length; i+=4)//take every 4 tribes and select the first (highest sorted) number
     {
-        totalDays += SortAllDays[i];
+        totalDays += SortAllDays[i];//add our first out of 4 (sorted) values of daystomax. this will ensure our total sum is based on the player completing 4 tribes per day, taking the highest amount of days as leading value
     }
  document.getElementById("total_quests_to_max").value = totalQuests;
 //document.getElementById("total_days_to_max").value = Math.ceil(totalQuests / 12);    
