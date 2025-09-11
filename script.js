@@ -388,7 +388,7 @@ var allTribes = document.getElementsByClassName(classNames="tribe"); //gwt total
       QuestsToNext = 0;
     }
     //skipping the current rank since we loaded in the quests to next
-    for (let index = (rank_Index + 1); index < tribeData.reputationData.reputationNeeded.length; index++) {
+    for (let index = (rank_Index + 1); index < (tribeData.reputationData.reputationNeeded.length - 1); index++) {
       //from the starting value, divide repneeded for next rank with rep gained per turnin
         QuestsToMax += Math.ceil(tribeData.reputationData.reputationNeeded[index] / tribeData.reputationData.reputationGainedPerTurnin[index]);
     }
