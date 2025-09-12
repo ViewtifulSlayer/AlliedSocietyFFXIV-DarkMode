@@ -307,22 +307,6 @@ function loadInputData() {
   }
 }
 
-//function loadInputData() {
- // if(localStorage.getItem("AlliedSocietyFFXIV") === null) {
- //   tribeState = {}
- // } else {
- //   tribeState = JSON.parse(localStorage["AlliedSocietyFFXIV"]);
-//  }
- // for (var tribe of Object.keys(tribeState)) {
-  //  var tribeSelectId = "Count_" + tribe;
-  //  var tribeRankId = tribe + "_rank";
-   // var tribeRepId = tribe + "_current_rep";
-  //  document.getElementById(tribeSelectId).checked = tribeState[tribe]["select"];
-  //  document.getElementById(tribeRankId).value = tribeState[tribe]["rank"];
-  //  document.getElementById(tribeRepId).value = tribeState[tribe]["rep"];
- // }
-//}
-
 function saveInputData() {
   var allTribes = document.getElementsByClassName(classNames="tribe");
 
@@ -344,10 +328,11 @@ function saveInputData() {
   localStorage["AlliedSocietyFFXIV"] = JSON.stringify(tribeState)
 }
 
-
 function compareNumbers(a, b) {
   return  b - a; //high to low
 }
+
+
 
 window.onload = function() {
  const AllInputs = document.getElementsByClassName("input"); //collect all inputs
@@ -425,6 +410,7 @@ var allTribes = document.getElementsByClassName(classNames="tribe"); //gwt total
     var tribeQuestsMaxId = tribe + "_quests_to_max";
     var tribeDaysNextId = tribe + "_days_to_next_Rank";
     var tribeDaysMaxId = tribe + "_days_to_max";
+
   //If select = false, all outputs are 0 
   var tribeSelectId = "Count_" + tribe;
   if (document.getElementById(tribeSelectId).checked) {//selected tribe
@@ -442,8 +428,22 @@ var allTribes = document.getElementsByClassName(classNames="tribe"); //gwt total
     document.getElementById(tribeDaysNextId).value = 0;
     document.getElementById(tribeDaysMaxId).value = 0;
   } 
-
-
+ //visualisation
+    var tribeNameId = tribe +"_name";
+    var tribeHeaderId =tribe + "_header";
+    var tribeBodyId =tribe;
+    let colName=document.getElementById(tribeNameId);
+    let colHeader=document.getElementById(tribeHeaderId);
+    let colBody=document.getElementById(tribeBodyId);
+    if (document.getElementById(tribeDaysMaxId).value != 0){
+    colName.style.backgroundColor=' #0c707d';
+    colHeader.style.backgroundColor=' #0c707d';
+    colBody.style.backgroundColor=' ##bad8eb'; //body
+    }else{
+    colName.style.backgroundColor='grey';
+    colHeader.style.backgroundColor='grey';
+    colBody.style.backgroundColor='lightgrey';
+    }
         
     }
 //**********TOTAL SUM FOR BOTTOM OF SCREEN**************** 
