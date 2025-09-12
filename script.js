@@ -436,9 +436,9 @@ var allTribes = document.getElementsByClassName(classNames="tribe"); //gwt total
     let colHeader=document.getElementById(tribeHeaderId);
     let colBody=document.getElementById(tribeBodyId);
     if (document.getElementById(tribeDaysMaxId).value != 0){
-    colName.style.backgroundColor=' #0c707d';
-    colHeader.style.backgroundColor=' #0c707d';
-    colBody.style.backgroundColor=' ##bad8eb'; //body
+    colName.style.backgroundColor= '#0c707d';
+    colHeader.style.backgroundColor= '#0c707d';
+    colBody.style.backgroundColor= '#bad8eb'; //body
     }else{
     colName.style.backgroundColor='grey';
     colHeader.style.backgroundColor='grey';
