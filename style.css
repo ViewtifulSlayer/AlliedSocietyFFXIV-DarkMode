@@ -50,7 +50,7 @@ input {
 }
 .tribe {
   display: inline-block;
-  background: #bad8eb;
+  background: #bad8eb; //lightgrey for done/unchecked
   margin: 5px;
 }
 table,
@@ -64,9 +64,11 @@ td {
 .tribe_header {
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
-  background: #0c707d;
+  background: #0c707d; //grey for done/unchecked
 }
-
+.tribe_name {
+  background: #0c707d; //grey for done/unchecked
+}
 .tribe_header > input {
   width: 3em;
   height: 3em;
