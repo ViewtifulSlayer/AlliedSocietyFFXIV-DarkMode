@@ -12,7 +12,7 @@ https://cirivere.github.io/AlliedSocietyFFXIV/
 ## Credits
  - The initial concept is based on the spreadsheet from u/brakeomafer on Reddit: https://www.reddit.com/r/ffxiv/comments/t05wm4/tribe_questrep_tracker_spreadsheet/
  - Speaking of which, I also expanded this spreadsheet here https://docs.google.com/spreadsheets/d/1jR5aAbLQ3BHU0ncQKP5FHtMY7jXKc71DNU5cXNqQO4I/ , in case anyone wants to copy this for multiple characters.
- - Info on Endwalker tribes added through: https://ffxiv.consolegameswiki.com/wiki/Reputation and https://ffxiv.consolegameswiki.com/wiki/Tribal_Quests
+ - Info on All tribes added through: https://ffxiv.consolegameswiki.com/wiki/Reputation and https://ffxiv.consolegameswiki.com/wiki/Tribal_Quests
 
 ## helpers:
 
