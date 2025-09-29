@@ -1,5 +1,6 @@
 # AlliedSocietyFFXIV
 Helper site to calculate how many days you need to complete Tribes in Final Fantasy XIV
+
 feedback welcome! https://github.com/cirivere/AlliedSocietyFFXIV/discussions
 
 ## How to use
