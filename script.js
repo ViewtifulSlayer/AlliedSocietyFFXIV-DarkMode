@@ -295,7 +295,7 @@ const TRIBE_DATA = [
 
 function loadInputData() {
   if(localStorage["AlliedSocietyFFXIV"]) {
-    tribeState = JSON.parse(localStorage["AlliedSocietyFFXIV"]);
+    const tribeState = JSON.parse(localStorage["AlliedSocietyFFXIV"]);
     for (var tribe of Object.keys(tribeState)) {
       var tribeSelectId = "Count_" + tribe;
       var tribeRankId = tribe + "_rank";
@@ -334,22 +334,56 @@ function compareNumbers(a, b) {
 
 
 
+// Dark Mode Toggle Functionality
+function initThemeToggle() {
+  const themeToggle = document.getElementById('theme-toggle');
+  const body = document.body;
+  
+  // Check for saved theme preference or default to light mode
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'dark') {
+    body.classList.add('dark-mode');
+    updateThemeButton(true);
+  }
+  
+  // Toggle theme on button click
+  themeToggle.addEventListener('click', function() {
+    body.classList.toggle('dark-mode');
+    const isDarkMode = body.classList.contains('dark-mode');
+    
+    // Save preference to localStorage
+    localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+    updateThemeButton(isDarkMode);
+  });
+}
+
+function updateThemeButton(isDarkMode) {
+  const themeToggle = document.getElementById('theme-toggle');
+  if (isDarkMode) {
+    themeToggle.textContent = '☀️ Light Mode';
+  } else {
+    themeToggle.textContent = '🌙 Dark Mode';
+  }
+}
+
 window.onload = function() {
  const AllInputs = document.getElementsByClassName("input"); //collect all inputs
- console.log()
  for (let i=0; i< AllInputs.length; i++) { //for the size of all inputs repeat checking if input changes
   AllInputs[i].addEventListener("change", function() {
    saveInputData();
    calculateTribeProgression();
   });
  }
+ 
+ // Initialize theme toggle
+ initThemeToggle();
 }
 
      
 // Now, let's create a function that will calculate what we need to max out a tribe.
 
 function calculateTribeProgression() {  
-var allTribes = document.getElementsByClassName(classNames="tribe"); //gwt total list of all tribes
+var allTribes = document.getElementsByClassName(classNames="tribe"); //get total list of all tribes
   for (var tribeElement of allTribes) {
     //***********GETTING ALL ID AND CONSTANTS***************
     var tribe = tribeElement.id;
@@ -376,13 +410,18 @@ var allTribes = document.getElementsByClassName(classNames="tribe"); //gwt total
     }
     var RepToMax= 0;
         for (let index = rank_Index; index < tribeData.reputationData.reputationNeeded.length; index++) {
-        RepToMax += tribeData.reputationData.reputationNeeded[index]  - current_rep;
+        // Only subtract current_rep from the first rank (current rank), not from all future ranks
+        if (index === rank_Index) {
+            RepToMax += tribeData.reputationData.reputationNeeded[index] - current_rep;
+        } else {
+            RepToMax += tribeData.reputationData.reputationNeeded[index];
+        }
     }
 
   //****QUEST DATA*************************************************
   //lets start with quest to next and then quest to max
     var QuestsToNext = Math.ceil((tribeData.reputationData.reputationNeeded[rank_Index] - current_rep) / tribeData.reputationData.reputationGainedPerTurnin[rank_Index]);
-    //load qyests to next as first tier, if bigger than 0
+    //load quests to next as first tier, if bigger than 0
     if (QuestsToNext >= 0 ){
       var QuestsToMax= QuestsToNext;
     }else{
@@ -451,7 +490,7 @@ var AllQuests = document.getElementsByClassName(classNames="QuestsToMax");
 var AllDays = document.getElementsByClassName(classNames="DaysToMax");
 //Lets pick the highest days to max for every 4 tribes, sorted from high to low 
 let SortAllDays = []; //declare empty array which we will fill with our total days values
-  for(x=0; x < AllDays.length; x++) { 
+  for(let x=0; x < AllDays.length; x++) { 
     SortAllDays.push(AllDays[x].value); //send all values to this array
         }
 SortAllDays.sort(compareNumbers); // [first we sort numerically, then we sort from high to low using b-a]          

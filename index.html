@@ -7,13 +7,18 @@
 </head>
 <body>
   <div class="topnav">
-  <a class="active" href="#Home">Home</a>
-  <a href="#ARR">ARR</a>
-  <a href="#HW">HW</a>
-  <a href="#STB">STB</a>
-  <a href="#SHB">SHB</a>
-  <a href="#EW">EW</a>
-  <a href="#DT">DT</a>
+  <div class="topnav-links">
+    <a class="active" href="#Home">Home</a>
+    <a href="#ARR">ARR</a>
+    <a href="#HW">HW</a>
+    <a href="#STB">STB</a>
+    <a href="#SHB">SHB</a>
+    <a href="#EW">EW</a>
+    <a href="#DT">DT</a>
+  </div>
+  <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+    🌙 Dark Mode
+  </button>
 </div>
   <h1 id="Home">FFXIV Tribe tracker</h1>
   <p>This calculator allows you to track how many quests and days you need to max the Allied society ranks.</p>
@@ -965,9 +970,9 @@
    <!--results -->
   <div class="summary_result" id="summary_result">
   
-    <h2>Results summary:</h2>
-<p>Total Quests to Max:<output id="total_quests_to_max"></output></p>
-<p>Total Days to Max<output id="total_days_to_max"></output></p>
+    <h2>Results Summary:</h2>
+<b><p>Total Quests to Max: <output id="total_quests_to_max"></output></p>
+<p>Total Days to Max: <output id="total_days_to_max"></output></p></b>
 
 </div>
   <script src="script.js"></script>
