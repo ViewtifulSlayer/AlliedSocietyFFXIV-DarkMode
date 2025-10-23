@@ -182,16 +182,10 @@ body.dark-mode td {
   justify-self: end;
 }
 
-/* Prevent sections from being hidden behind the sticky navbar and add expansion highlighting behavior*/
+/* Prevent sections from being hidden behind the sticky navbar */
 .expansion {
   scroll-margin-top: 80px; /* adjust to match .topnav height */
-  transition: transform 0.3s ease, background-color 0.3s ease; /* subtle hover animation for .expansion sections*/
-}
-
-.expansion:hover {
-  transform: scale(1.01);
-  background-color: var(--bg-secondary);
-}
+ }
 
 .summary_result {
   position: sticky;
