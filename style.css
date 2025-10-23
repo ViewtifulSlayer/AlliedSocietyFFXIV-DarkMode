@@ -184,10 +184,10 @@ body.dark-mode td {
 
 /* Prevent sections from being hidden behind the sticky navbar */
 #Home {
-  scroll-margin-top: 80px; /* same height as your navbar */
+  scroll-margin-top: 75px; /* same height as your navbar */
 }
 .expansion {
-  scroll-margin-top: 80px; /* adjust to match .topnav height */
+  scroll-margin-top: 75px; /* adjust to match .topnav height */
  }
 
 .summary_result {
