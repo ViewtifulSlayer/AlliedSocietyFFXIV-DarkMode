@@ -70,6 +70,14 @@ body {
   color: var(--hover-text);
 }
 
+.topnav a:focus {
+  outline: 3px solid var(--bg-accent); /* Clear visible outline */
+  outline-offset: 2px;
+  background-color: var(--hover-bg);
+  color: var(--hover-text);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
 .topnav a.active {
   background-color: var(--bg-accent);
   color: var(--text-light);
