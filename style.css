@@ -173,6 +173,11 @@ body.dark-mode td {
   justify-self: end;
 }
 
+/* Prevent sections from being hidden behind the sticky navbar */
+.expansion {
+  scroll-margin-top: 80px; /* adjust to match .topnav height */
+}
+
 .summary_result {
   position: sticky;
   bottom: 0;
