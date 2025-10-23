@@ -80,7 +80,7 @@ const TRIBE_REPUTATION_DATA = [
         ]
     },
     {
-        "tribe_type": "sb",
+        "tribe_type": "stb",
         "reputationNeeded": [
             0,    //skipping rank 1 
             0,    //skipping rank 2           
@@ -216,19 +216,19 @@ const TRIBE_DATA = [
     {
         "name": "Namazu",
         "id": "namazu",
-        "reputationData": TRIBE_REPUTATION_DATA.find(tribe => tribe.tribe_type === "sb"),
+        "reputationData": TRIBE_REPUTATION_DATA.find(tribe => tribe.tribe_type === "stb"),
         "daysNeededToMax": 31
     },
     {
         "name": "Anata",
         "id": "anata",
-        "reputationData": TRIBE_REPUTATION_DATA.find(tribe => tribe.tribe_type === "sb"),
+        "reputationData": TRIBE_REPUTATION_DATA.find(tribe => tribe.tribe_type === "stb"),
         "daysNeededToMax": 31
     },
     {
         "name": "Kojin",
         "id": "kojin",
-        "reputationData": TRIBE_REPUTATION_DATA.find(tribe => tribe.tribe_type === "sb"),
+        "reputationData": TRIBE_REPUTATION_DATA.find(tribe => tribe.tribe_type === "stb"),
         "daysNeededToMax": 31
     },
     {
