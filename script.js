@@ -539,3 +539,13 @@ window.addEventListener("scroll", () => {
     }
   });
 });
+
+// Restore scroll position to last section viewed
+window.addEventListener("beforeunload", () => {
+  localStorage.setItem("lastSection", window.location.hash);
+});
+
+window.addEventListener("load", () => {
+  const last = localStorage.getItem("lastSection");
+  if (last) location.hash = last;
+});
