@@ -64,6 +64,7 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+
 .topnav a:hover {
   background-color: var(--hover-bg);
   color: var(--hover-text);
@@ -195,4 +196,8 @@ body.dark-mode td {
 .summary_result p {
   color: #0c707d;
   margin: 5px 0;
+}
+
+html {
+  scroll-behavior: smooth;
 }
